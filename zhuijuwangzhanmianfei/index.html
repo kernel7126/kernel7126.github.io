@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>追剧网站免费追剧在线观看-剧集资源与观看指南</title>
+<meta name="description" content="追剧网站免费追剧在线观看频道整理国产剧、韩剧、美剧与短剧的更新表、题材分类和观看避坑要点，附本站示例数据说明、用户实测反馈与找剧方法，帮你在黄金档前后快速定位想看的剧集。">
+<meta name="keywords" content="追剧网站免费追剧在线观看">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141b2d'/%3E%3Cpath d='M24 18l24 14-24 14z' fill='%23f5b84d'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1b2130;
+  --ink-2:#3a4358;
+  --muted:#6b7488;
+  --line:#e2e5ec;
+  --bg:#f6f7fa;
+  --card:#ffffff;
+  --brand:#17304f;
+  --brand-2:#24507c;
+  --accent:#e0722c;
+  --accent-soft:#fdf1e6;
+  --gold:#f5b84d;
+  --ok:#2f7a55;
+  --r-s:6px;
+  --r-m:10px;
+  --r-l:16px;
+  --sh-1:0 1px 2px rgba(20,27,45,.06),0 2px 8px rgba(20,27,45,.05);
+  --sh-2:0 4px 16px rgba(20,27,45,.10);
+  --sp-1:6px;--sp-2:10px;--sp-3:16px;--sp-4:24px;--sp-5:36px;--sp-6:56px;
+  --fs-xs:12px;--fs-s:13.5px;--fs-b:15px;--fs-m:17px;--fs-l:21px;--fs-xl:28px;--fs-xxl:38px;
+  --sticky-top:0px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:104px;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  font-size:var(--fs-b);line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand-2);text-decoration:none;}
+a:hover{color:var(--accent);}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;letter-spacing:.01em;}
+p{margin:0 0 var(--sp-3);}
+ul,ol{margin:0 0 var(--sp-3);padding-left:1.25em;}
+li{margin-bottom:6px;}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+.skip{position:absolute;left:-9999px;top:0;background:var(--brand);color:#fff;padding:10px 16px;border-radius:0 0 var(--r-m) 0;z-index:99;}
+.skip:focus{left:0;}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;}
+
+/* ============ 公告条 + 页头 ============ */
+.sticky-shell{position:sticky;top:0;z-index:50;}
+.notice{
+  background:linear-gradient(90deg,#141b2d,#1f3252 60%,#223a5c);
+  color:#e8edf6;font-size:var(--fs-s);letter-spacing:.01em;
+}
+.notice .wrap{display:flex;align-items:center;gap:12px;min-height:38px;padding-top:4px;padding-bottom:4px;flex-wrap:wrap;}
+.notice .tag{
+  background:var(--gold);color:#20180a;font-weight:700;font-size:11px;
+  padding:1px 7px;border-radius:4px;letter-spacing:.06em;flex:none;
+}
+.notice time{color:#f8d79a;font-variant-numeric:tabular-nums;}
+.notice .notice-link{color:#fff;border-bottom:1px solid rgba(255,255,255,.45);margin-left:auto;white-space:nowrap;}
+.notice .notice-link:hover{color:var(--gold);border-color:var(--gold);}
+
+header.site{
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 1px 0 rgba(20,27,45,.04);
+}
+.header-inner{display:flex;align-items:center;gap:var(--sp-4);min-height:62px;}
+.brand{display:flex;align-items:center;gap:10px;flex:none;}
+.brand .logo-mark{width:36px;height:36px;display:block;flex:none;}
+.brand .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+.brand .brand-text b{font-size:var(--fs-m);color:var(--brand);letter-spacing:.02em;}
+.brand .brand-text span{font-size:11px;color:var(--muted);letter-spacing:.14em;}
+nav.main-nav{flex:1;min-width:0;}
+nav.main-nav ul{display:flex;flex-wrap:wrap;gap:2px 4px;list-style:none;margin:0;padding:0;}
+nav.main-nav a{
+  display:block;padding:6px 10px;border-radius:var(--r-s);font-size:var(--fs-s);
+  color:var(--ink-2);white-space:nowrap;
+}
+nav.main-nav a:hover{background:var(--accent-soft);color:#a94e10;}
+nav.main-nav a.active{color:#0f2340;font-weight:700;background:#eef2f8;}
+.header-tools{display:flex;align-items:center;gap:8px;flex:none;}
+.search-box{position:relative;display:flex;align-items:center;}
+.search-box input[type="search"]{
+  width:190px;padding:7px 34px 7px 12px;border:1px solid var(--line);border-radius:999px;
+  font-size:var(--fs-s);background:#fff;color:var(--ink);font-family:inherit;
+}
+.search-box input[type="search"]:focus{border-color:var(--brand-2);outline:none;box-shadow:0 0 0 3px rgba(36,80,124,.15);}
+.search-box button{
+  position:absolute;right:4px;width:26px;height:26px;border:0;border-radius:50%;
+  background:var(--brand);color:#fff;cursor:pointer;display:grid;place-items:center;padding:0;
+}
+.search-box button svg{width:14px;height:14px;}
+.search-feedback{position:absolute;top:calc(100% + 8px);right:0;width:280px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-m);box-shadow:var(--sh-2);padding:10px 12px;font-size:var(--fs-s);color:var(--ink-2);
+  display:none;z-index:60;}
+.search-feedback.show{display:block;}
+.search-feedback strong{color:var(--brand);}
+a.btn-watch{
+  display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;
+  font-size:var(--fs-s);font-weight:600;padding:8px 14px;border-radius:999px;white-space:nowrap;
+}
+a.btn-watch:hover{background:#c55f1e;color:#fff;}
+.menu-toggle{display:none;border:1px solid var(--line);background:#fff;border-radius:var(--r-s);
+  width:38px;height:34px;cursor:pointer;align-items:center;justify-content:center;padding:0;}
+.menu-toggle svg{width:18px;height:18px;stroke:var(--ink-2);}
+mark.hit{background:#ffe9a8;color:inherit;border-radius:2px;}
+
+/* ============ 首屏 ============ */
+.hero{
+  background:
+    radial-gradient(1100px 420px at 82% -10%,rgba(245,184,77,.22),transparent 62%),
+    linear-gradient(160deg,#101827 0%,#17263f 55%,#1d3352 100%);
+  color:#eaf0f8;position:relative;overflow:hidden;
+}
+.hero .wrap{
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:var(--sp-5);align-items:center;padding-top:var(--sp-6);padding-bottom:var(--sp-6);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-xs);letter-spacing:.12em;
+  color:#f7d9a5;border:1px solid rgba(245,184,77,.4);border-radius:999px;padding:3px 12px;margin-bottom:var(--sp-3);
+}
+.hero-badge i{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;}
+.hero h1{
+  font-size:var(--fs-xxl);letter-spacing:.02em;color:#fff;margin-bottom:var(--sp-3);
+}
+.hero h1 .hl{color:var(--gold);}
+.hero .lede{font-size:var(--fs-m);color:#c3d0e2;max-width:34em;margin-bottom:var(--sp-4);}
+.hero .lede b{color:#fff;font-weight:600;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:var(--sp-4);}
+.btn-primary,.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-s);font-weight:600;
+  padding:10px 20px;border-radius:999px;transition:transform .15s ease,background .15s ease;
+}
+.btn-primary{background:var(--gold);color:#20180a;}
+.btn-primary:hover{background:#ffca66;color:#20180a;transform:translateY(-2px);}
+.btn-ghost{border:1px solid rgba(255,255,255,.34);color:#e6edf7;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.hero-stats{display:flex;flex-wrap:wrap;gap:var(--sp-4);padding-top:var(--sp-3);border-top:1px solid rgba(255,255,255,.14);}
+.hero-stats div{display:flex;flex-direction:column;line-height:1.25;}
+.hero-stats b{font-size:var(--fs-l);color:#fff;font-variant-numeric:tabular-nums;}
+.hero-stats span{font-size:var(--fs-xs);color:#9fb0c8;letter-spacing:.04em;}
+/* 首屏原创视觉：剧集排期板 */
+.art{
+  position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--r-l);padding:18px;box-shadow:0 20px 40px rgba(4,10,20,.35);
+  backdrop-filter:blur(4px);
+}
+.art-head{display:flex;justify-content:space-between;align-items:center;font-size:var(--fs-xs);color:#a9bacf;margin-bottom:12px;letter-spacing:.05em;}
+.art-head b{color:#fff;font-size:var(--fs-s);letter-spacing:.02em;}
+.art-rows{display:grid;gap:9px;}
+.art-row{
+  display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;
+  background:rgba(255,255,255,.07);border-radius:8px;padding:8px 10px;font-size:var(--fs-xs);
+}
+.art-row .d{color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums;}
+.art-row .t{color:#e8eef7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.art-row .s{font-size:10.5px;padding:1px 7px;border-radius:999px;background:rgba(245,184,77,.16);color:#f7d9a5;white-space:nowrap;}
+.art-row .s.done{background:rgba(120,220,170,.14);color:#9fe7c0;}
+.art-row .s.wait{background:rgba(255,255,255,.12);color:#c3d0e2;}
+.art-foot{margin-top:12px;font-size:11px;color:#8fa3bd;display:flex;justify-content:space-between;}
+.art::after{
+  content:"";position:absolute;inset:auto -30px -40px auto;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,184,77,.30),transparent 70%);filter:blur(6px);pointer-events:none;
+}
+
+/* ============ 主体布局 ============ */
+main{padding-top:var(--sp-5);}
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--sp-5);align-items:start;
+}
+.main-col{min-width:0;}
+.side-col{min-width:0;position:sticky;top:112px;display:grid;gap:var(--sp-3);}
+section.block{margin-bottom:var(--sp-6);}
+.block-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:var(--sp-3);}
+.block-head h2{
+  font-size:var(--fs-l);color:var(--brand);position:relative;padding-left:14px;
+}
+.block-head h2::before{
+  content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:2px;
+  background:linear-gradient(180deg,var(--accent),var(--gold));
+}
+.block-head .sub{font-size:var(--fs-s);color:var(--muted);}
+.block-head .more{margin-left:auto;font-size:var(--fs-s);}
+
+/* 概览：标签索引 + 三段说明 */
+.overview-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--sp-4);align-items:start;}
+.prose-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:var(--sp-4);box-shadow:var(--sh-1);}
+.prose-card h3{font-size:var(--fs-m);color:var(--brand);margin-bottom:8px;}
+.prose-card p{font-size:14.5px;color:var(--ink-2);}
+.prose-card p:last-child{margin-bottom:0;}
+.tag-index{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none;}
+.tag-index li{margin:0;}
+.tag-index a{
+  display:inline-block;font-size:var(--fs-s);padding:4px 11px;border-radius:999px;
+  border:1px solid var(--line);background:#fff;color:var(--ink-2);
+}
+.tag-index a:hover{border-color:var(--accent);color:#a94e10;background:var(--accent-soft);}
+.mini-rule{margin-top:var(--sp-3);background:#fbfaf6;border:1px dashed #e3d9c2;border-radius:var(--r-m);padding:12px 14px;font-size:var(--fs-s);color:#6a5b3e;}
+.mini-rule b{color:#8a5a12;}
+
+/* 精选推荐：网格卡片 */
+.pick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:var(--sp-3);}
+.pick-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .16s ease,box-shadow .16s ease;
+}
+.pick-card:hover{transform:translateY(-3px);box-shadow:var(--sh-2);}
+.pick-card img{width:100%;height:132px;object-fit:cover;display:block;background:#dfe4ee;}
+.pick-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+.pick-body h3{font-size:15px;color:var(--ink);}
+.pick-body h3 a{color:inherit;}
+.pick-card:hover h3 a{color:var(--accent);}
+.pick-meta{font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;}
+.pick-body p{font-size:13px;color:var(--ink-2);margin:0;}
+.pick-foot{margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;font-size:12px;}
+.chip{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:999px;background:#eef2f8;color:#38506e;}
+.chip.hot{background:var(--accent-soft);color:#a94e10;}
+.chip.new{background:#e9f6ef;color:var(--ok);}
+
+/* 最新更新：紧凑列表 + 时间线竖线 */
+.update-list{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--sh-1);overflow:hidden;}
+.update-list li{display:grid;grid-template-columns:88px 1fr auto;gap:12px;align-items:center;padding:11px 16px;margin:0;border-bottom:1px solid #eef0f5;}
+.update-list li:last-child{border-bottom:0;}
+.update-list time{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:7px;}
+.update-list time::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;}
+.update-list .u-title{font-size:14px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;}
+.update-list .u-title b{font-weight:600;}
+.update-list .u-note{font-size:12px;color:var(--muted);}
+.update-list .u-ep{font-size:12px;color:#38506e;background:#eef2f8;border-radius:5px;padding:1px 8px;white-space:nowrap;}
+
+/* 分类入口：频道格 */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;list-style:none;margin:0;padding:0;}
+.cat-grid li{margin:0;}
+.cat-grid a{
+  display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:var(--r-m);
+  background:#fff;border:1px solid var(--line);height:100%;
+}
+.cat-grid a:hover{border-color:var(--accent);background:#fffaf4;}
+.cat-grid b{font-size:14px;color:var(--brand);}
+.cat-grid span{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* 深度解析：分栏正文 */
+.deep{background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:var(--sp-4) var(--sp-4) var(--sp-3);box-shadow:var(--sh-1);}
+.deep-lead{font-size:15.5px;color:var(--ink-2);border-left:3px solid var(--gold);padding-left:14px;margin-bottom:var(--sp-4);}
+.deep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 var(--sp-4);}
+.deep-grid .col-a,.deep-grid .col-b{min-width:0;}
+.deep h3{font-size:16.5px;color:var(--brand);margin:var(--sp-3) 0 8px;padding-top:var(--sp-3);border-top:1px dashed #dfe4ee;}
+.deep-grid .col-a h3:first-child,.deep-grid .col-b h3:first-child{border-top:0;padding-top:0;margin-top:0;}
+.deep p{font-size:14.5px;color:var(--ink-2);}
+.deep strong{color:var(--ink);}
+.verify-table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 var(--sp-3);}
+.verify-table th,.verify-table td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;}
+.verify-table th{background:#f3f5f9;color:var(--brand);font-weight:600;white-space:nowrap;}
+.verify-table td{color:var(--ink-2);}
+.fact-tag{display:inline-block;font-size:10.5px;padding:0 6px;border-radius:3px;margin-right:5px;letter-spacing:.04em;}
+.fact-tag.f{background:#e9f6ef;color:var(--ok);}
+.fact-tag.r{background:#eef3fb;color:#2c5c94;}
+.fact-tag.t{background:#fdf6e6;color:#8a5a12;}
+.fact-tag.s{background:#f7eef1;color:#8c3b52;}
+
+/* 体验指南：编号步骤 */
+.steps{list-style:none;counter-reset:step;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--sp-3);}
+.steps li{
+  counter-increment:step;position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-m);
+  padding:16px 16px 14px 16px;margin:0;
+}
+.steps li::before{
+  content:counter(step,decimal-leading-zero);display:block;font-size:var(--fs-l);font-weight:700;
+  color:var(--gold);letter-spacing:.04em;line-height:1;margin-bottom:8px;
+}
+.steps b{display:block;font-size:14px;color:var(--brand);margin-bottom:4px;}
+.steps p{font-size:13px;color:var(--ink-2);margin:0;}
+
+/* 榜单（补充板块） */
+.rank-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--sh-1);overflow:hidden;}
+.rank-list{list-style:none;margin:0;padding:0;}
+.rank-list li{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid #eef0f5;margin:0;}
+.rank-list li:last-child{border-bottom:0;}
+.rank-list .no{font-weight:700;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.rank-list li:nth-child(1) .no{color:#c8102e;}
+.rank-list li:nth-child(2) .no{color:var(--accent);}
+.rank-list li:nth-child(3) .no{color:#b2882e;}
+.rank-list .rk-t{font-size:14px;color:var(--ink);}
+.rank-list .rk-t span{display:block;font-size:12px;color:var(--muted);}
+.rank-list .rk-v{font-size:12px;color:var(--brand-2);white-space:nowrap;font-variant-numeric:tabular-nums;}
+
+/* 评论 */
+.comment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--sp-3);}
+.comment{background:#fff;border:1px solid var(--line);border-radius:var(--r-m);padding:14px 16px;box-shadow:var(--sh-1);display:flex;flex-direction:column;gap:8px;}
+.comment .who{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted);}
+.comment .who i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;color:#fff;background:var(--brand-2);flex:none;}
+.comment:nth-child(2n) .who i{background:#7a5c2e;}
+.comment:nth-child(3n) .who i{background:#3c6e58;}
+.comment p{font-size:13.5px;color:var(--ink-2);margin:0;}
+.comment .to{font-size:12px;color:var(--brand-2);background:#f4f7fb;border-radius:5px;padding:2px 8px;align-self:flex-start;}
+.stars{color:var(--gold);letter-spacing:2px;font-size:12px;}
+
+/* FAQ */
+.faq-wrap{display:grid;gap:10px;}
+details.faq{background:#fff;border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--sh-1);overflow:hidden;}
+details.faq summary{
+  cursor:pointer;list-style:none;padding:13px 46px 13px 16px;position:relative;
+  font-size:14.5px;font-weight:600;color:var(--brand);
+}
+details.faq summary::-webkit-details-marker{display:none;}
+details.faq summary::after{
+  content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  font-size:18px;color:var(--accent);font-weight:400;transition:transform .16s ease;
+}
+details.faq[open] summary::after{content:"–";}
+details.faq .ans{padding:0 16px 14px;font-size:14px;color:var(--ink-2);border-top:1px dashed #eaeef5;margin-top:-1px;padding-top:12px;}
+details.faq .ans p:last-child{margin-bottom:0;}
+
+/* 相关资讯 + 相关推荐 */
+.news-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.news-list li{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-m);padding:12px 15px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline;}
+.news-list .n-title{font-size:14px;font-weight:600;color:var(--ink);}
+.news-list .n-desc{grid-column:1;font-size:12.5px;color:var(--muted);}
+.news-list time{grid-column:2;grid-row:1;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.reco-tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0;}
+.reco-tags li{margin:0;}
+.reco-tags a{display:inline-block;font-size:13px;padding:5px 12px;border-radius:var(--r-s);background:#fff;border:1px solid var(--line);color:var(--ink-2);}
+.reco-tags a:hover{border-color:var(--accent);color:#a94e10;}
+
+/* 侧栏 */
+.side-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--sh-1);padding:var(--sp-3) var(--sp-3);}
+.side-card h2{font-size:15px;color:var(--brand);margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.side-card h2::before{content:"";width:4px;height:14px;border-radius:2px;background:var(--accent);}
+.side-nav ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;}
+.side-nav a{display:block;font-size:13.5px;color:var(--ink-2);padding:6px 9px;border-radius:var(--r-s);border-left:2px solid transparent;}
+.side-nav a:hover{background:#f4f7fb;color:var(--brand);}
+.side-nav a.on{background:#eef2f8;color:var(--brand);font-weight:700;border-left-color:var(--accent);}
+.side-quote{background:linear-gradient(150deg,#17263f,#22406a);color:#dbe6f4;border:0;}
+.side-quote h2{color:#fff;}
+.side-quote h2::before{background:var(--gold);}
+.side-quote p{font-size:13px;color:#c3d0e2;margin-bottom:10px;}
+.side-quote blockquote{margin:0;font-size:13.5px;color:#f3f7fc;border-left:2px solid var(--gold);padding-left:10px;}
+.side-mini-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.side-mini-list li{margin:0;font-size:13px;display:flex;justify-content:space-between;gap:8px;color:var(--ink-2);border-bottom:1px dashed #eef0f5;padding-bottom:7px;}
+.side-mini-list li:last-child{border-bottom:0;padding-bottom:0;}
+.side-mini-list b{font-weight:600;color:var(--brand);}
+.side-mini-list em{font-style:normal;color:var(--accent);font-variant-numeric:tabular-nums;font-size:12px;white-space:nowrap;}
+
+/* 页脚 */
+footer.site{background:#101827;color:#b9c5d6;margin-top:var(--sp-4);font-size:13.5px;}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:var(--sp-4);padding:var(--sp-5) 0 var(--sp-4);}
+.footer-brand .brand .brand-text b{color:#fff;}
+.footer-brand p{font-size:13px;color:#93a3ba;margin:10px 0 0;max-width:30em;}
+.footer-col h3{font-size:13.5px;color:#fff;margin-bottom:10px;letter-spacing:.05em;}
+.footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.footer-col a{color:#a9b8cc;font-size:13px;}
+.footer-col a:hover{color:var(--gold);}
+.footer-note{border-top:1px solid rgba(255,255,255,.1);padding:var(--sp-3) 0 0;font-size:12px;color:#7f90a7;line-height:1.85;}
+.footer-note b{color:#c3d0e2;font-weight:600;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:14px 0 22px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;font-size:12px;color:#7f90a7;}
+.footer-bottom .upd time{color:#c3d0e2;font-variant-numeric:tabular-nums;}
+
+/* 回到顶部 */
+#toTop{
+  position:fixed;right:18px;bottom:20px;width:42px;height:42px;border-radius:50%;
+  background:var(--brand);color:#fff;border:0;display:grid;place-items:center;cursor:pointer;
+  box-shadow:var(--sh-2);opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:55;
+}
+#toTop.show{opacity:1;visibility:visible;transform:translateY(0);}
+#toTop:hover{background:var(--accent);}
+#toTop svg{width:18px;height:18px;}
+
+/* ============ 响应式 ============ */
+@media (max-width:1000px){
+  .layout{grid-template-columns:minmax(0,1fr) 264px;gap:var(--sp-4);}
+  .hero .wrap{grid-template-columns:1fr;gap:var(--sp-4);}
+  .hero h1{font-size:32px;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  nav.main-nav a{padding:6px 8px;}
+}
+@media (max-width:820px){
+  .layout{grid-template-columns:1fr;}
+  .side-col{position:static;top:auto;}
+  .overview-grid{grid-template-columns:1fr;}
+  .header-inner{flex-wrap:wrap;gap:10px;padding-top:8px;padding-bottom:8px;}
+  nav.main-nav{order:3;flex-basis:100%;display:none;}
+  nav.main-nav.open{display:block;}
+  nav.main-nav ul{flex-direction:column;gap:2px;padding-bottom:6px;}
+  nav.main-nav a{padding:9px 10px;font-size:14px;}
+  .menu-toggle{display:inline-flex;}
+  .header-tools{margin-left:auto;}
+  .search-box input[type="search"]{width:150px;}
+  .menu-toggle svg{stroke:var(--brand);}
+  html{scroll-padding-top:150px;}
+}
+@media (max-width:640px){
+  .wrap{padding:0 14px;}
+  .hero .wrap{padding-top:var(--sp-5);padding-bottom:var(--sp-5);}
+  .hero h1{font-size:27px;}
+  .hero .lede{font-size:15px;}
+  .hero-stats{gap:var(--sp-3) var(--sp-4);}
+  .hero-stats b{font-size:19px;}
+  .pick-grid{grid-template-columns:1fr;}
+  .update-list li{grid-template-columns:66px 1fr;row-gap:3px;}
+  .update-list .u-ep{grid-column:2;justify-self:start;}
+  .deep{padding:16px 14px;}
+  .footer-top{grid-template-columns:1fr;gap:var(--sp-3);}
+  .news-list li{grid-template-columns:1fr;}
+  .news-list time{grid-column:1;grid-row:auto;color:var(--muted);}
+  #toTop{right:12px;bottom:14px;width:40px;height:40px;}
+  .search-box input[type="search"]{width:118px;}
+  .search-feedback{width:min(280px,calc(100vw - 28px));right:-8px;}
+  .notice .wrap{gap:8px;}
+  .notice .notice-link{margin-left:0;}
+  a.btn-watch{padding:7px 11px;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+  .pick-card:hover,.btn-primary:hover,.btn-ghost:hover{transform:none;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="sticky-shell">
+  <div class="notice">
+    <div class="wrap">
+      <span class="tag">更新</span>
+      <span><time datetime="2026-11-08">11月8日</time> 上午 09:20 同步《长风渡口》第 26 集、《雾港谍影》第 9 集字幕版；附表本周 14 部剧集排期变动。</span>
+      <a class="notice-link" href="#updates">看更新明细 →</a>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="wrap header-inner">
+      <a class="brand" href="/#top" aria-label="回到首页顶部">
+        <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="追剧网站免费追剧在线观看图形标志">
+          <rect width="64" height="64" rx="14" fill="#17304f"/>
+          <rect x="9" y="15" width="46" height="30" rx="5" fill="none" stroke="#f5b84d" stroke-width="2.6"/>
+          <path d="M27 24.5l13 7.5-13 7.5z" fill="#f5b84d"/>
+          <circle cx="14.5" cy="21.5" r="2" fill="#e0722c"/>
+          <circle cx="14.5" cy="38.5" r="2" fill="#e0722c"/>
+        </svg>
+        <span class="brand-text">
+          <b>追剧网站免费追剧在线观看</b>
+          <span>剧集排期 · 观看指南</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="展开或收起主题导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <ul>
+          <li><a href="#overview" class="active">追剧概览</a></li>
+          <li><a href="#picks">编辑甄选</a></li>
+          <li><a href="#updates">更新时间表</a></li>
+          <li><a href="#channels">题材频道</a></li>
+          <li><a href="#deep">深度解析</a></li>
+          <li><a href="#guide">观看体验指南</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-tools">
+        <div class="search-box">
+          <label for="siteSearch" class="skip">站内搜索剧集</label>
+          <input type="search" id="siteSearch" placeholder="搜剧名 / 演员 / 题材" autocomplete="off">
+          <button type="button" id="searchBtn" aria-label="执行站内搜索">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+          </button>
+          <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></div>
+        </div>
+        <a class="btn-watch" href="#updates">今晚更新</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="hero-badge"><i></i>2026 冬季档 · 排期同步中</span>
+      <h1>追剧网站<span class="hl">免费追剧在线观看</span></h1>
+      <p class="lede">按播出日整理国产剧、韩剧、美剧与竖屏短剧的资源入口，标出<b>已完结、追更中、待定档</b>三种状态，附每部剧的集数、更新节奏与字幕组来源。不吹“全网最全”，只把当天能看什么写清楚。</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#updates">查看今日更新 14 部</a>
+        <a class="btn-ghost" href="#guide">先看找剧方法</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>326</b><span>在追剧集条目</span></div>
+        <div><b>14</b><span>今日更新</span></div>
+        <div><b>9</b><span>题材频道</span></div>
+        <div><b>08:00</b><span>排期校对时间</span></div>
+      </div>
+    </div>
+
+    <div class="art" aria-label="本周剧集排期板示意图" role="img">
+      <div class="art-head"><b>本周排期板</b><span>11.02 – 11.08</span></div>
+      <div class="art-rows">
+        <div class="art-row"><span class="d">11.08</span><span class="t">长风渡口 · 第26集</span><span class="s done">已更</span></div>
+        <div class="art-row"><span class="d">11.08</span><span class="t">雾港谍影 · 第9集</span><span class="s done">已更</span></div>
+        <div class="art-row"><span class="d">11.08</span><span class="t">小巷人家事 · 第41集</span><span class="s wait">20:00</span></div>
+        <div class="art-row"><span class="d">11.07</span><span class="t">急诊科手记 · 第18集</span><span class="s done">已更</span></div>
+        <div class="art-row"><span class="d">11.06</span><span class="t">雪落长安 · 第12集</span><span class="s wait">周更</span></div>
+        <div class="art-row"><span class="d">11.05</span><span class="t">归途列车 · 全28集</span><span class="s done">完结</span></div>
+      </div>
+      <div class="art-foot"><span>示例排期，非真实播出数据</span><span>校对 09:20</span></div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+    <div class="layout">
+
+      <div class="main-col">
+
+        <!-- 1 领域概览 -->
+        <section class="block" id="overview">
+          <div class="block-head">
+            <h2>追剧概览：一部剧从定档到完结要盯哪些环节</h2>
+            <span class="sub">先弄清排期、字幕、集数三个变量</span>
+          </div>
+          <div class="overview-grid">
+            <div class="prose-card">
+              <h3>一集剧上线，中间至少要过四道手</h3>
+              <p>电视台或平台定档，片方交付母带，字幕组做时间轴与翻译，聚合站点再抓取分集链接。《长风渡口》第 26 集 11 月 8 日 09:20 出现在首页，实际上 11 月 7 日 22:40 已在播出平台首播，字幕版滞后约 10 小时。知道这条链路，才能明白“几点更新”为什么每部剧都不一样。</p>
+              <p>常见四种更新节奏：卫视黄金档日更、平台会员抢先看、周更两集、一次性放出全季。日更剧的集数误差最小，周更剧最容易跳票；一次性放出的韩剧与美剧，往往首日就有全集资源，之后只剩删减与字幕修订的差别。</p>
+              <p>集数标记同样影响判断。剧集页写“共 40 集”，可能是报审集数，也可能是实际播出集数，两者差 2—4 集在国产剧中并不罕见。追更时以分集列表为准，首页标签只作参考。</p>
+            </div>
+            <div>
+              <div class="prose-card">
+                <h3>按题材找剧的入口词</h3>
+                <ul class="tag-index">
+                  <li><a href="/#channels">国产悬疑剧</a></li>
+                  <li><a href="/#channels">古装权谋剧</a></li>
+                  <li><a href="/#channels">都市家庭剧</a></li>
+                  <li><a href="/#channels">韩剧更新表</a></li>
+                  <li><a href="/#channels">美剧季播排期</a></li>
+                  <li><a href="/#channels">竖屏短剧</a></li>
+                  <li><a href="/#channels">医疗职场剧</a></li>
+                  <li><a href="/#channels">谍战剧</a></li>
+                  <li><a href="/#channels">年代剧</a></li>
+                  <li><a href="/#channels">完结剧补看</a></li>
+                </ul>
+                <div class="mini-rule"><b>判断口径</b>：状态标签“已更”指分集链接可点，“待定档”只是有备案消息，两者不能混看。站内条目均为示例数据，用于演示排期结构。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2 精选推荐 -->
+        <section class="block" id="picks">
+          <div class="block-head">
+            <h2>编辑甄选：本周值得先开的六部</h2>
+            <span class="sub">按完结度、口碑波动、字幕质量挑</span>
+          </div>
+          <div class="pick-grid">
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/changfengdukou/480/280" width="480" height="280" loading="lazy" alt="《长风渡口》海报视觉：渡口木栈道与暮色江面" style="object-fit:cover;">
+              <div class="pick-body">
+                <h3><a href="#updates">长风渡口（古装权谋剧）</a></h3>
+                <div class="pick-meta"><span class="chip hot">追更中</span><span>第 26 集</span><span>民国线转朝堂</span></div>
+                <p>前半段走水路商战，第 20 集后权谋密度上来。11 月 8 日字幕版比首播晚 10 小时。</p>
+                <div class="pick-foot"><span class="chip">卫视日更</span><span>更新 20:00</span></div>
+              </div>
+            </article>
+
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/wugangdieying/480/280" width="480" height="280" loading="lazy" alt="《雾港谍影》海报视觉：雨夜码头与霓虹招牌" style="object-fit:cover;">
+              <div class="pick-body">
+                <h3><a href="#deep">雾港谍影（谍战剧）</a></h3>
+                <div class="pick-meta"><span class="chip new">口碑上行</span><span>第 9 集</span><span>豆瓣短评增 2100 条</span></div>
+                <p>第 7 集“电台频率”反转被讨论最多，台词里两次提到 1943 年 3 月的上海站名单。</p>
+                <div class="pick-foot"><span class="chip">周更两集</span><span>周二、周六</span></div>
+              </div>
+            </article>
+
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/xiaoxiangrenjia/480/280" width="480" height="280" loading="lazy" alt="《小巷人家事》海报视觉：老式弄堂与晾衣竹竿" style="object-fit:cover;">
+              <div class="pick-body">
+                <h3><a href="#channels">小巷人家事（都市家庭剧）</a></h3>
+                <div class="pick-meta"><span class="chip">长尾热度</span><span>第 41 集</span><span>共 46 集</span></div>
+                <p>三条家庭线并行，弹幕里“二婶线”讨论占比约三成。适合吃饭时放着看。</p>
+                <div class="pick-foot"><span class="chip">会员抢先</span><span>18:00 上线</span></div>
+              </div>
+            </article>
+
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/xueluoChangan/480/280" width="480" height="280" loading="lazy" alt="《雪落长安》海报视觉：雪中宫墙与灯笼" style="object-fit:cover;">
+              <div class="pick-body">
+                <h3><a href="/#channels">雪落长安（古装单元剧）</a></h3>
+                <div class="pick-meta"><span class="chip">单元结构</span><span>第 12 集</span><span>每周四更</span></div>
+                <p>四个单元各自独立，跳看不影响主线。第 3 单元摄影评价明显高于前两单元。</p>
+                <div class="pick-foot"><span class="chip">周更</span><span>周四 12:00</span></div>
+              </div>
+            </article>
+
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/jizhenkeshouji/480/280" width="480" height="280" loading="lazy" alt="《急诊科手记》海报视觉：医院走廊与监护仪" style="object-fit:cover;">
+              <div class="pick-body">
+                <h3><a href="/#faq">急诊科手记（医疗职场剧）</a></h3>
+                <div class="pick-meta"><span class="chip new">已完结</span><span>全 28 集</span><span>豆瓣 7.9</span></div>
+                <p>病例均为虚构，医学顾问署名在片尾第 4 分钟。适合一次刷完，不拖节奏。</p>
+                <div class="pick-foot"><span class="chip">完结补看</span><span>全集可点</span></div>
+              </div>
+            </article>
+
+            <article class="pick-card">
+              <img src="https://picsum.photos/seed/guitulieche/480/280" width="480" height="280" loading="lazy" alt="《归途列车》海报视觉：绿皮车窗与站台" style="object-fit:cover;">
+              <div class="pick-body">
+                <h3><a href="/#channels">归途列车（年代剧）</a></h3>
+                <div class="pick-meta"><span class="chip">完结</span><span>全 28 集</span><span>11 月 5 日收官</span></div>
+                <p>1998 年铁路改制背景，道具考据被观众逐条截图对比。结尾两集争议较大。</p>
+                <div class="pick-foot"><span class="chip">年代群像</span><span>已完结</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 3 最新更新 -->
+        <section class="block" id="updates">
+          <div class="block-head">
+            <h2>更新时间表：11 月 5 日至 8 日分集动态</h2>
+            <span class="sub">只看有分集链接变动的条目</span>
+            <a class="more" href="#news">相关资讯 →</a>
+          </div>
+          <ul class="update-list">
+            <li>
+              <time datetime="2026-11-08">11月8日</time>
+              <span class="u-title"><b>长风渡口</b><span class="u-note">第 26 集上线，字幕组“青禾”版，时长 45:12</span></span>
+              <span class="u-ep">第 26 集</span>
+            </li>
+            <li>
+              <time datetime="2026-11-08">11月8日</time>
+              <span class="u-title"><b>雾港谍影</b><span class="u-note">第 9 集，片尾彩蛋 30 秒，片源标注“无删减”</span></span>
+              <span class="u-ep">第 9 集</span>
+            </li>
+            <li>
+              <time datetime="2026-11-07">11月7日</time>
+              <span class="u-title"><b>急诊科手记</b><span class="u-note">第 18 集补更高清版，原 720p 链接替换</span></span>
+              <span class="u-ep">第 18 集</span>
+            </li>
+            <li>
+              <time datetime="2026-11-07">11月7日</time>
+              <span class="u-title"><b>小巷人家事</b><span class="u-note">第 40 集，会员抢先看；第 41 集 11 月 8 日 18:00</span></span>
+              <span class="u-ep">第 40 集</span>
+            </li>
+            <li>
+              <time datetime="2026-11-06">11月6日</time>
+              <span class="u-title"><b>雪落长安</b><span class="u-note">第 12 集，第 3 单元“雪夜灯市”开篇</span></span>
+              <span class="u-ep">第 12 集</span>
+            </li>
+            <li>
+              <time datetime="2026-11-05">11月5日</time>
+              <span class="u-title"><b>归途列车</b><span class="u-note">第 27、28 集收官，全季资源归档</span></span>
+              <span class="u-ep">已完结</span>
+            </li>
+            <li>
+              <time datetime="2026-11-05">11月5日</time>
+              <span class="u-title"><b>海雾之下</b><span class="u-note">韩剧，第 5 集；字幕组版本比生肉晚 6 小时</span></span>
+              <span class="u-ep">第 5 集</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 4 分类入口 -->
+        <section class="block" id="channels">
+          <div class="block-head">
+            <h2>题材频道：按你会搜的类别分</h2>
+            <span class="sub">九个频道，各自保留独立条目池</span>
+          </div>
+          <ul class="cat-grid">
+            <li><a href="/#deep"><b>国产悬疑剧</b><span>案件单元 + 主线钩子，共 58 部</span></a></li>
+            <li><a href="/#picks"><b>古装权谋剧</b><span>朝堂线与家族线，41 部</span></a></li>
+            <li><a href="/#updates"><b>都市家庭剧</b><span>日更长剧为主，36 部</span></a></li>
+            <li><a href="/#guide"><b>韩剧更新表</b><span>周末档与月火剧分开标，64 部</span></a></li>
+            <li><a href="/#overview"><b>美剧季播排期</b><span>按秋春季档归类，52 部</span></a></li>
+            <li><a href="/#comments"><b>竖屏短剧</b><span>单集 2—5 分钟，按话题标签归档，73 部</span></a></li>
+            <li><a href="/#faq"><b>医疗职场剧</b><span>顾问阵容单独标注，19 部</span></a></li>
+            <li><a href="/#deep"><b>谍战剧</b><span>年代背景与原型对照，27 部</span></a></li>
+            <li><a href="/#rank"><b>完结剧补看</b><span>可一次刷完，无追更焦虑，112 部</span></a></li>
+          </ul>
+        </section>
+
+        <!-- 5 深度解析（全页唯一主体阅读区） -->
+        <section class="block" id="deep">
+          <div class="block-head">
+            <h2>深度解析：字幕越快不等于看得越舒服</h2>
+            <span class="sub">以雾港谍影与归途列车为例拆解判断</span>
+          </div>
+          <article class="deep">
+            <p class="deep-lead">11 月 8 日 09:20，首页同时出现《雾港谍影》第 9 集与《长风渡口》第 26 集，前者标注“无删减”，后者标注“青禾字幕”。两条链接的上线时间差只有 4 分钟，但决定观看体验的东西并不在时间戳上。</p>
+            <div class="deep-grid">
+              <div class="col-a">
+                <h3>判断一：字幕上线速度与准确率没有正相关</h3>
+                <p>《雾港谍影》第 7 集在首播后 3 小时 40 分上线，字幕组“南屿”版；第 9 集提前到 2 小时 10 分，却出现两处翻译偏差。片中 1943 年 3 月上海站名单在 08:12 被译作“人员清单”，第 9 集 21:36 又译“花名册”，同一道具两种译法。</p>
+                <p><strong>可核对结构：</strong>第 7 集字幕总时长 44:58，第 9 集 45:06；字符数分别约 1.1 万与 1.2 万；校对署名由 3 人减为 2 人。速度提升 90 分钟，校对人数少 1 人，这是误差出现的可查线索，不是主观感受。</p>
+                <p>反过来，《归途列车》全 28 集由“青禾”一次性交付，第 27 集 1998 年铁路改制文件在画面出现 2 秒，字幕把“站段合并”译出，属额外增益。慢一天，换来的是背景信息的可读性。</p>
+
+                <h3>判断二：完结剧的资源稳定度高于追更剧</h3>
+                <p>11 月 5 日《归途列车》收官后，全季 28 集在首页一次挂齐，三天内没有链接失效记录。《小巷人家事》第 40 集则出现 2 次片源替换，时间分别是 11 月 7 日 19:05 与 21:40，原因是会员抢先版与卫视版剪辑不同。</p>
+                <p>这条判断可以被反驳：若平台对完结剧下架，稳定性也会归零。判断成立的前提是“同平台同季内”，跨平台不适用。站内示例条目均为虚构，读者可拿这条去核对真实平台的失效频率。</p>
+              </div>
+              <div class="col-b">
+                <h3>判断三：排期表的信息密度比标签页高</h3>
+                <p>标签页只告诉你“在追”，排期表告诉你“哪天断更”。11 月 2 日至 8 日，首页 14 条更新里有 3 条属于补更而非新集：《急诊科手记》高清替换、〈雪落长安〉第 11 集重传、《海雾之下》第 4 集字幕修正。若不区分，极易误当成新剧情去点。</p>
+                <table class="verify-table">
+                  <caption style="text-align:left;font-size:12.5px;color:var(--muted);padding:4px 0;">11 月 5—8 日条目性质核对（示例数据）</caption>
+                  <thead>
+                    <tr><th>时间</th><th>条目</th><th>性质</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>11-08</td><td>长风渡口 26</td><td><span class="fact-tag f">事实</span>新集上线</td></tr>
+                    <tr><td>11-08</td><td>雾港谍影 9</td><td><span class="fact-tag t">转述</span>片方称无删减</td></tr>
+                    <tr><td>11-07</td><td>急诊科手记 18</td><td><span class="fact-tag r">回应</span>画质更正说明</td></tr>
+                    <tr><td>11-06</td><td>雪落长安 11</td><td><span class="fact-tag s">推测</span>疑为音轨修复</td></tr>
+                  </tbody>
+                </table>
+                <p>四个标签对应四种可信度：事实有分集链接与时间戳；回应有字幕组公告；转述只有片方措辞；推测尚无公开说明。把这条分层用在任何一部剧上，都能减少“等了一晚上结果只是补更”的消耗。</p>
+
+                <h3>说法差异：集数口径的三处出入</h3>
+                <p>《长风渡口》备案 42 集，首页标 40 集，实际分集列表到第 26 集仍在更新；《雪落长安》标 16 集，单元剧实际按 4 个单元各 4 集；《海雾之下》韩方标 12 集，中文字幕版按上下部拆成 2 季。口径不统一是追更体验差的直接原因，和站点规模无关。</p>
+                <p>能在评论区看到的最尖锐反驳是：“集数对不上，说明排期表根本没人维护。”这条批评有事实基础，示例数据里就有两处口径不一，保留它比删掉更诚实。</p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- 6 观看体验指南 -->
+        <section class="block" id="guide">
+          <div class="block-head">
+            <h2>观看体验指南：五步定位今晚要看的剧</h2>
+            <span class="sub">从题材到片源，按顺序做</span>
+          </div>
+          <ol class="steps">
+            <li>
+              <b>先定时间窗</b>
+              <p>今天有 45 分钟，就选 40—45 分钟单集的正剧；只有 10 分钟，去竖屏短剧频道，单集 2—5 分钟，看完一集不卡在半截。</p>
+            </li>
+            <li>
+              <b>再看完结状态</b>
+              <p>追更剧要接受断更与片源替换，完结剧可一次刷完。《归途列车》全 28 集已归档，适合不想被吊着的人。</p>
+            </li>
+            <li>
+              <b>核对集数口径</b>
+              <p>以分集列表数字为准，首页标签只作参考。备案集数与播出集数差 2—4 集，在国产剧中属常见区间。</p>
+            </li>
+            <li>
+              <b>确认字幕来源</b>
+              <p>同一集可能有多个字幕组版本，时长、校对人数、译名都可能不同。先看片源标注，再决定是否等下一版。</p>
+            </li>
+            <li>
+              <b>记下断更日</b>
+              <p>周更剧的断更日固定，写进日历比每天刷首页省事。卫视日更剧在节假日前后也可能停更一集。</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- 7 榜单（补充板块） -->
+        <section class="block" id="rank">
+          <div class="block-head">
+            <h2>本周追更热度榜：按分集点击与评论量排</h2>
+            <span class="sub">示例统计口径，非平台真实数据</span>
+          </div>
+          <div class="rank-card">
+            <ol class="rank-list">
+              <li><span class="no">1</span><span class="rk-t">长风渡口<span>第 26 集 · 卫视日更</span></span><span class="rk-v">评论 1,284 条</span></li>
+              <li><span class="no">2</span><span class="rk-t">雾港谍影<span>第 9 集 · 周更两集</span></span><span class="rk-v">评论 962 条</span></li>
+              <li><span class="no">3</span><span class="rk-t">小巷人家事<span>第 41 集 · 会员抢先</span></span><span class="rk-v">评论 718 条</span></li>
+              <li><span class="no">4</span><span class="rk-t">急诊科手记<span>全 28 集 · 已完结</span></span><span class="rk-v">评论 546 条</span></li>
+              <li><span class="no">5</span><span class="rk-t">雪落长安<span>第 12 集 · 周更</span></span><span class="rk-v">评论 323 条</span></li>
+              <li><span class="no">6</span><span class="rk-t">海雾之下<span>第 5 集 · 韩剧字幕版</span></span><span class="rk-v">评论 209 条</span></li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 8 用户评论 -->
+        <section class="block" id="comments">
+          <div class="block-head">
+            <h2>用户评论：追更现场与踩坑记录</h2>
+            <span class="sub">含中性评价与吐槽，保留原话语气</span>
+          </div>
+          <div class="comment-grid">
+            <div class="comment">
+              <div class="who"><i>林</i><span>林一舟 · 11月8日 10:04</span></div>
+              <div class="stars" aria-label="评分 4 星">★★★★☆</div>
+              <p>《雾港谍影》第 9 集那个“花名册”前后不一致，看的时候愣了一下，不过剧情本身还是稳的。第 7 集电台频率那段值得回看。</p>
+              <span class="to">指向：雾港谍影 第 9 集</span>
+            </div>
+            <div class="comment">
+              <div class="who"><i>阿</i><span>阿橙不吃香菜 · 11月7日 22:16</span></div>
+              <div class="stars" aria-label="评分 3 星">★★★☆☆</div>
+              <p>《小巷人家事》第 40 集换了两次片源，我这边看到一半黑屏，重进才正常。内容没问题，体验一般。</p>
+              <span class="to">指向：小巷人家事 第 40 集</span>
+            </div>
+            <div class="comment">
+              <div class="who"><i>陈</i><span>陈拾六 · 11月7日 19:40</span></div>
+              <div class="stars" aria-label="评分 5 星">★★★★★</div>
+              <p>《归途列车》结尾两集确实仓促，但第 21 集站台那场戏值回票价。1998 年的调度室布景，连值班表都做了。</p>
+              <span class="to">指向：归途列车 第 21 集</span>
+            </div>
+            <div class="comment">
+              <div class="who"><i>周</i><span>周小满 · 11月6日 13:02</span></div>
+              <div class="stars" aria-label="评分 3 星">★★★☆☆</div>
+              <p>《雪落长安》单元剧结构对补看友好，但第 2 单元节奏拖，四集能讲完的事拉到五集，倍速看完的。</p>
+              <span class="to">指向：雪落长安 第 2 单元</span>
+            </div>
+            <div class="comment">
+              <div class="who"><i>许</i><span>许三刀 · 11月5日 21:25</span></div>
+              <div class="stars" aria-label="评分 4 星">★★★★☆</div>
+              <p>《急诊科手记》病例是虚构的，片尾顾问署名我特意看了，确实有。喜欢这种不吵不闹的职业剧。</p>
+              <span class="to">指向：急诊科手记 片尾顾问</span>
+            </div>
+            <div class="comment">
+              <div class="who"><i>默</i><span>默白 · 11月5日 16:48</span></div>
+              <div class="stars" aria-label="评分 2 星">★★☆☆☆</div>
+              <p>《海雾之下》字幕版比生肉慢 6 小时能接受，但第 4 集修正后时间轴对不上，得手动调。希望校对把轴再过一遍。</p>
+              <span class="to">指向：海雾之下 第 4 集字幕</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9 常见问题 -->
+        <section class="block" id="faq">
+          <div class="block-head">
+            <h2>常见问题：追更时的具体疑问</h2>
+            <span class="sub">点击问题展开答案</span>
+          </div>
+          <div class="faq-wrap">
+            <details class="faq">
+              <summary>追剧网站免费追剧在线观看时，“已更”和“完结”有什么区别？</summary>
+              <div class="ans">
+                <p>“已更”指该集分集链接已经可以点开，剧集本身仍在更新；“完结”指整季或整部剧的全部分集都已到位。前者要接受后续断更与片源替换，后者可直接一次刷完。《归途列车》11 月 5 日收官后属于后者。</p>
+              </div>
+            </details>
+            <details class="faq">
+              <summary>卫视日更剧为什么字幕版会比首播晚好几个小时？</summary>
+              <div class="ans">
+                <p>首播结束后才能拿到带台标的片源，字幕组接着做时间轴、翻译与校对。《长风渡口》第 26 集首播 22:40 结束，字幕版 09:20 上线，中间约 10 小时，属于正常区间。校对人数越少，压轴时间通常越短。</p>
+              </div>
+            </details>
+            <details class="faq">
+              <summary>周更剧的断更日怎么提前知道？</summary>
+              <div class="ans">
+                <p>看播出平台的官方排期，而不是聚合页标签。周更剧一般固定周二、周六或周四更新，遇到节假日或大型活动会顺延一周。排期表里出现“补更”字样时，多半只是旧集重传，不是新剧情。</p>
+              </div>
+            </details>
+            <details class="faq">
+              <summary>同一集出现多个字幕组版本，怎么挑？</summary>
+              <div class="ans">
+                <p>先看片源标注的时长与校对人数，再看译名是否统一。以《雾港谍影》为例，同一道具在第 9 集出现两种译法，说明校对压缩了。慢一点的版本通常译名更稳，但不是绝对。</p>
+              </div>
+            </details>
+            <details class="faq">
+              <summary>备案集数与实际播出集数对不上，该信哪个？</summary>
+              <div class="ans">
+                <p>以分集列表显示的实际集数为准。备案集数是报审时的数字，播出时可能合并或拆分单元。国产剧差 2—4 集属于常见区间，单元剧按单元计数时差异会更大。</p>
+              </div>
+            </details>
+            <details class="faq">
+              <summary>竖屏短剧和常规剧集抢时间吗？</summary>
+              <div class="ans">
+                <p>不抢。竖屏短剧单集 2—5 分钟，适合碎片时间；常规剧集单集 40 分钟以上，需要连续时段。两者在观看计划里分属不同场景，混排只会让当晚的选择变乱。</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 10 相关资讯 -->
+        <section class="block" id="news">
+          <div class="block-head">
+            <h2>相关资讯：排期与片源变动</h2>
+            <span class="sub">日期均在 11 月内</span>
+          </div>
+          <ul class="news-list">
+            <li>
+              <span class="n-title">《长风渡口》卫视排期调整，11 月 9 日停更一集</span>
+              <span class="n-desc">平台公告称因节目编排顺延，第 27 集改至 11 月 10 日播出。</span>
+              <time datetime="2026-11-08">11月8日</time>
+            </li>
+            <li>
+              <span class="n-title">《雾港谍影》第 9 集片源标注“无删减”，片长 45:06</span>
+              <span class="n-desc">与第 8 集 45:02 相差 4 秒，属正常波动，未见额外片段。</span>
+              <time datetime="2026-11-08">11月8日</time>
+            </li>
+            <li>
+              <span class="n-title">《急诊科手记》第 18 集高清版替换完成</span>
+              <span class="n-desc">原 720p 链接下线，画质升到 1080p，片尾顾问名单未变。</span>
+              <time datetime="2026-11-07">11月7日</time>
+            </li>
+            <li>
+              <span class="n-title">《归途列车》全季归档，28 集资源集中上线</span>
+              <span class="n-desc">11 月 5 日收官后三日内无链接失效记录，适合补看。</span>
+              <time datetime="2026-11-05">11月5日</time>
+            </li>
+            <li>
+              <span class="n-title">《海雾之下》中文字幕版第 4 集时间轴修正</span>
+              <span class="n-desc">修正后仍存在 2 处对口不同步，字幕组称下一版处理。</span>
+              <time datetime="2026-11-05">11月5日</time>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 11 相关推荐 -->
+        <section class="block" id="reco">
+          <div class="block-head">
+            <h2>相关推荐：按你正在追的剧找下一部</h2>
+            <span class="sub">标签即搜索词</span>
+          </div>
+          <ul class="reco-tags">
+            <li><a href="/#picks">古装权谋剧推荐</a></li>
+            <li><a href="/#deep">国产悬疑剧高分</a></li>
+            <li><a href="/#updates">韩剧更新表 11 月</a></li>
+            <li><a href="/#guide">美剧季播排期</a></li>
+            <li><a href="/#channels">竖屏短剧合集</a></li>
+            <li><a href="/#rank">已完结年代剧</a></li>
+            <li><a href="/#faq">谍战剧字幕版本对比</a></li>
+            <li><a href="/#comments">医疗职场剧清单</a></li>
+            <li><a href="/#overview">卫视日更剧怎么看</a></li>
+            <li><a href="/#channels">完结剧补看频道</a></li>
+          </ul>
+        </section>
+
+      </div><!-- /.main-col -->
+
+      <!-- 侧栏（移动端位于主内容之后） -->
+      <aside class="side-col" aria-label="侧栏辅助信息">
+        <div class="side-card side-nav">
+          <h2>栏目导航</h2>
+          <ul id="sideNavList">
+            <li><a href="#overview">追剧概览</a></li>
+            <li><a href="#picks">编辑甄选</a></li>
+            <li><a href="#updates">更新时间表</a></li>
+            <li><a href="#channels">题材频道</a></li>
+            <li><a href="#deep">深度解析</a></li>
+            <li><a href="#guide">观看体验指南</a></li>
+            <li><a href="#rank">追更热度榜</a></li>
+            <li><a href="#comments">用户评论</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="#news">相关资讯</a></li>
+            <li><a href="#reco">相关推荐</a></li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <h2>今日排期速览</h2>
+          <ul class="side-mini-list">
+            <li><b>长风渡口</b><em>第 26 集 09:20</em></li>
+            <li><b>雾港谍影</b><em>第 9 集 09:04</em></li>
+            <li><b>小巷人家事</b><em>第 41 集 18:00</em></li>
+            <li><b>雪落长安</b><em>周四 12:00</em></li>
+            <li><b>海雾之下</b><em>第 5 集 已更</em></li>
+          </ul>
+        </div>
+
+        <div class="side-card side-quote">
+          <h2>一条现场判断</h2>
+          <p>字幕快一小时，校对少一人，译名就多一种写法。</p>
+          <blockquote>《雾港谍影》第 9 集 21:36 的“花名册”与第 7 集的“人员清单”，指同一份 1943 年上海站名单。</blockquote>
+        </div>
+
+        <div class="side-card">
+          <h2>看剧小工具</h2>
+          <ul class="side-mini-list">
+            <li><b>断更日提醒</b><em>周更剧</em></li>
+            <li><b>集数口径核对</b><em>以分集列表为准</em></li>
+            <li><b>字幕版本对比</b><em>时长 / 校对人数</em></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div><!-- /.layout -->
+  </div><!-- /.wrap -->
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="追剧网站免费追剧在线观看页脚图形标志">
+            <rect width="64" height="64" rx="14" fill="#22406a"/>
+            <rect x="9" y="15" width="46" height="30" rx="5" fill="none" stroke="#f5b84d" stroke-width="2.6"/>
+            <path d="M27 24.5l13 7.5-13 7.5z" fill="#f5b84d"/>
+          </svg>
+          <span class="brand-text">
+            <b>追剧网站免费追剧在线观看</b>
+            <span>剧集排期 · 观看指南</span>
+          </span>
+        </div>
+        <p>把当天能看的剧、哪天断更、字幕版本差在哪写清楚，追更的人少刷几次首页。</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>题材频道</h3>
+        <ul>
+          <li><a href="/#channels">国产悬疑剧</a></li>
+          <li><a href="/#channels">古装权谋剧</a></li>
+          <li><a href="/#channels">都市家庭剧</a></li>
+          <li><a href="/#channels">韩剧更新表</a></li>
+          <li><a href="/#channels">竖屏短剧</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>栏目入口</h3>
+        <ul>
+          <li><a href="/#picks">编辑甄选</a></li>
+          <li><a href="/#updates">更新时间表</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">观看体验指南</a></li>
+          <li><a href="/#rank">追更热度榜</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>互助与反馈</h3>
+        <ul>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#reco">相关推荐</a></li>
+          <li><a href="/#top">回到顶部</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><b>示例数据说明：</b>站内剧名、集数、更新时间、评论内容与热度数值均为演示排期结构所生成的示例条目，不对应真实播出平台与真实用户；引用日期集中在 2026 年 11 月 5 日至 11 月 8 日。需核对真实排期时，请以播出平台公告与分集列表为准。</p>
+      <p><b>内容口径：</b>“事实 / 回应 / 转述 / 推测”四类标签用于区分信息可信度，其中“推测”项尚无公开说明，勿当作已证实的片源结论。</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 追剧网站免费追剧在线观看 · 示例站点</span>
+      <span class="upd">页脚更新时间：<time datetime="2026-11-08">2026-11-08 09:20</time>，对应正文“更新时间表”与“相关资讯”两条 11 月 8 日条目</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到页面顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 移动端菜单：语义化按钮 + 键盘可用 ---------- */
+  var menuBtn = document.getElementById('menuToggle');
+  var nav = document.getElementById('mainNav');
+  menuBtn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && window.matchMedia('(max-width: 820px)').matches){
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && nav.classList.contains('open')){
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.focus();
+    }
+  });
+
+  /* ---------- 平滑滚动，为吸顶预留偏移（关闭 JS 时锚点仍可用） ---------- */
+  function stickyOffset(){
+    var shell = document.querySelector('.sticky-shell');
+    return (shell ? shell.offsetHeight : 0) + 14;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="/#"], a[href^="#"]');
+    if(!a) return;
+    var href = a.getAttribute('href');
+    var id = href.replace(/^\/?#/, '');
+    if(!id) return;
+    var target = document.getElementById(id);
+    if(!target) return;
+    e.preventDefault();
+    var y = target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top: Math.max(y, 0), behavior: reduce ? 'auto' : 'smooth'});
+    if(history.replaceState){ history.replaceState(null, '', '#top'); }
+    if(target.getAttribute('tabindex') === null){ target.setAttribute('tabindex','-1'); }
+    target.focus({preventScroll:true});
+  });
+
+  /* ---------- 回到顶部按钮 ---------- */
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    if(window.pageYOffset > 600){ toTop.classList.add('show'); }
+    else{ toTop.classList.remove('show'); }
+    highlightNav();
+  }
+  toTop.addEventListener('click', function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+  });
+
+  /* ---------- 侧栏导航滚动高亮 ---------- */
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('#sideNavList a'));
+  var sections = sideLinks.map(function(a){
+    return document.getElementById(a.getAttribute('href').replace(/^\/?#/,''));
+  }).filter(Boolean);
+  var topNavLinks = Array.prototype.slice.call(document.querySelectorAll('nav.main-nav a'));
+  function highlightNav(){
+    var pos = window.pageYOffset + stickyOffset() + 40;
+    var current = null;
+    sections.forEach(function(sec){
+      if(sec.offsetTop <= pos){ current = sec.id; }
+    });
+    if(!current && sections.length){ current = sections[0].id; }
+    sideLinks.forEach(function(a){
+      var id = a.getAttribute('href').replace(/^\/?#/,'');
+      a.classList.toggle('on', id === current);
+    });
+    topNavLinks.forEach(function(a){
+      var id = a.getAttribute('href').replace(/^\/?#/,'');
+      a.classList.toggle('active', id === current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', highlightNav);
+  onScroll();
+
+  /* ---------- 本地搜索：只在已渲染内容中查找，提供无结果反馈 ---------- */
+  var input = document.getElementById('siteSearch');
+  var btn = document.getElementById('searchBtn');
+  var feedback = document.getElementById('searchFeedback');
+  var sourceNodes = Array.prototype.slice.call(
+    document.querySelectorAll('.main-col h2, .main-col h3, .main-col .u-title, .main-col .n-title, .main-col .rk-t, .main-col .pick-body p, .main-col .cat-grid b, .main-col summary')
+  );
+  function clearMarks(root){
+    root.querySelectorAll('mark.hit').forEach(function(m){
+      var p = m.parentNode;
+      if(p){ p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); }
+    });
+  }
+  var t;
+  function doSearch(){
+    var q = (input.value || '').trim();
+    if(q.length < 1){
+      feedback.className = 'search-feedback show';
+      feedback.innerHTML = '输入剧名、演员或题材词，例如“雾港谍影”“韩剧更新表”。';
+      return;
+    }
+    clearMarks(document.querySelector('.main-col'));
+    var hits = [];
+    sourceNodes.forEach(function(node){
+      var text = node.textContent || '';
+      if(text.indexOf(q) !== -1){
+        hits.push({node:node, text:text.trim().slice(0,42)});
+      }
+    });
+    if(hits.length === 0){
+      feedback.className = 'search-feedback show';
+      feedback.innerHTML = '没有找到与 <strong>“'+escapeHtml(q)+'”</strong> 相关的剧集或栏目。试试换用题材词：悬疑剧、古装权谋剧、竖屏短剧。';
+      return;
+    }
+    feedback.className = 'search-feedback show';
+    var list = hits.slice(0,5).map(function(h){
+      return '<div>· '+escapeHtml(h.text)+(h.text.length>=42?'…':'')+'</div>';
+    }).join('');
+    feedback.innerHTML = '在站内找到 <strong>'+hits.length+'</strong> 处与“'+escapeHtml(q)+'”相关：'+list;
+    /* 高亮首个命中 */
+    var first = hits[0].node;
+    highlightText(first, q);
+    var rect = first.getBoundingClientRect();
+    var y = rect.top + window.pageYOffset - stickyOffset() - 20;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top: Math.max(y,0), behavior: reduce ? 'auto' : 'smooth'});
+  }
+  function highlightText(root, q){
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var target = null, n;
+    while((n = walker.nextNode())){
+      if(n.nodeValue.indexOf(q) !== -1){ target = n; break; }
+    }
+    if(!target) return;
+    var idx = target.nodeValue.indexOf(q);
+    var before = target.nodeValue.slice(0, idx);
+    var after = target.nodeValue.slice(idx + q.length);
+    var mark = document.createElement('mark');
+    mark.className = 'hit';
+    mark.textContent = q;
+    var frag = document.createDocumentFragment();
+    if(before) frag.appendChild(document.createTextNode(before));
+    frag.appendChild(mark);
+    if(after) frag.appendChild(document.createTextNode(after));
+    target.parentNode.replaceChild(frag, target);
+  }
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  btn.addEventListener('click', doSearch);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+    if(e.key === 'Escape'){ feedback.className = 'search-feedback'; }
+  });
+  input.addEventListener('input', function(){
+    if(!input.value.trim()){ feedback.className = 'search-feedback'; }
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.search-box')){ feedback.className = 'search-feedback'; }
+  });
+
+  /* ---------- 选中导航/侧栏点击后同步高亮 ---------- */
+  topNavLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      topNavLinks.forEach(function(x){ x.classList.remove('active'); });
+      a.classList.add('active');
+    });
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "追剧网站免费追剧在线观看",
+      "inLanguage": "zh-CN",
+      "description": "按播出日整理国产剧、韩剧、美剧与竖屏短剧的排期、集数口径与字幕版本差异，附追更方法与示例数据说明。"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "追剧网站免费追剧在线观看时，“已更”和“完结”有什么区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "“已更”指该集分集链接已经可以点开，剧集本身仍在更新；“完结”指整季或整部剧的全部分集都已到位。前者要接受后续断更与片源替换，后者可直接一次刷完。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "卫视日更剧为什么字幕版会比首播晚好几个小时？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "首播结束后才能拿到带台标的片源，字幕组接着做时间轴、翻译与校对。《长风渡口》第26集首播22:40结束，字幕版09:20上线，中间约10小时。校对人数越少，压轴时间通常越短。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "周更剧的断更日怎么提前知道？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "看播出平台的官方排期，而不是聚合页标签。周更剧一般固定周二、周六或周四更新，遇到节假日或大型活动会顺延一周。排期表里出现“补更”字样时，多半只是旧集重传。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "同一集出现多个字幕组版本，怎么挑？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "先看片源标注的时长与校对人数，再看译名是否统一。《雾港谍影》第9集同一道具出现两种译法，说明校对压缩了。慢一点的版本通常译名更稳，但不是绝对。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "备案集数与实际播出集数对不上，该信哪个？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "以分集列表显示的实际集数为准。备案集数是报审时的数字，播出时可能合并或拆分单元。国产剧差2—4集属于常见区间，单元剧按单元计数时差异更大。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "竖屏短剧和常规剧集抢时间吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不抢。竖屏短剧单集2—5分钟，适合碎片时间；常规剧集单集40分钟以上，需要连续时段。两者在观看计划里分属不同场景。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+  </html>
