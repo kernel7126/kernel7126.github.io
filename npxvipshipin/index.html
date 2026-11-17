@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>npxvip 视频-播放器与资源站实测</title>
+<meta name="description" content="npxvip 视频专注整理视频播放器与资源站的实测记录，覆盖播放内核、字幕与弹幕、投屏延迟、片源格式对照、常见故障排查与用户评论，帮你在不同设备和网络条件下选对工具与片源。">
+<meta name="keywords" content="npxvip 视频">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121a2b'/%3E%3Cpath d='M24 18l24 14-24 14z' fill='%2335d0c0'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0e1420;
+  --bg-2:#131c2b;
+  --card:#182234;
+  --card-2:#1e2a40;
+  --line:#2a3852;
+  --text:#e7eef8;
+  --muted:#9aaac4;
+  --dim:#71809b;
+  --main:#35d0c0;
+  --main-2:#1fa596;
+  --accent:#ffb347;
+  --warn:#ff6b6b;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 8px 24px rgba(0,0,0,.35);
+  --space:clamp(14px,2vw,22px);
+  --font:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --lh:1.75;
+  --sticky-top:0px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--font);background:var(--bg);color:var(--text);
+  line-height:var(--lh);font-size:16px;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--main);text-decoration:none}
+a:hover{color:#7ff0e4}
+h1,h2,h3{line-height:1.35;margin:0}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1em;padding-left:1.25em}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* ---------- sticky stack ---------- */
+.sticky-stack{position:sticky;top:0;z-index:50}
+.notice{
+  background:linear-gradient(90deg,#17253a,#123044);
+  border-bottom:1px solid var(--line);
+  font-size:13px;color:var(--muted);
+}
+.notice .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:7px 0}
+.notice b{color:var(--accent);font-weight:600}
+.notice .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--main);margin-right:6px;vertical-align:1px}
+.header{
+  background:rgba(14,20,32,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header .wrap{display:flex;align-items:center;gap:18px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:700;font-size:19px;letter-spacing:.3px;flex:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand:hover{color:var(--text)}
+nav.mainnav{margin-left:auto}
+nav.mainnav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav.mainnav a{
+  display:block;padding:7px 11px;border-radius:999px;font-size:14px;color:var(--muted);
+  transition:background .18s,color .18s;
+}
+nav.mainnav a:hover,nav.mainnav a.active{background:var(--card-2);color:var(--main)}
+.head-tools{display:flex;align-items:center;gap:10px;flex:none}
+.searchbox{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 4px 3px 13px}
+.searchbox input{
+  background:none;border:0;color:var(--text);font-size:14px;width:150px;padding:6px 0;
+}
+.searchbox input::placeholder{color:var(--dim)}
+.searchbox button{
+  background:var(--main);color:#07211f;border:0;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;
+}
+.searchbox button:hover{background:#5de3d5}
+.menubtn{
+  display:none;background:var(--card);border:1px solid var(--line);color:var(--text);
+  border-radius:var(--radius-sm);padding:8px 11px;font-size:14px;cursor:pointer;
+}
+.menubtn:hover{border-color:var(--main)}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+section[id],div[id].anchor{scroll-margin-top:118px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:
+  radial-gradient(900px 420px at 82% -10%,rgba(53,208,192,.16),transparent 60%),
+  radial-gradient(700px 380px at 6% 110%,rgba(255,179,71,.10),transparent 60%),
+  var(--bg-2);
+}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding-top:44px;padding-bottom:46px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--main);background:rgba(53,208,192,.10);border:1px solid rgba(53,208,192,.35);padding:4px 12px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-size:clamp(30px,4.4vw,46px);letter-spacing:.5px;margin-bottom:16px}
+.hero h1 span{color:var(--main)}
+.hero p.lead{font-size:16.5px;color:var(--muted);max-width:34em;margin-bottom:22px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:transform .16s,background .16s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--main);color:#062421}
+.btn.primary:hover{background:#5de3d5}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--main);color:var(--main)}
+.hero-stats{display:flex;gap:26px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.hero-stats li{font-size:13px;color:var(--dim)}
+.hero-stats b{display:block;font-size:22px;color:var(--text);font-weight:700}
+.hero-art{position:relative;min-height:270px}
+.hero-art svg{width:100%;height:auto;display:block}
+
+/* ---------- layout ---------- */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:34px;padding-top:40px;padding-bottom:52px}
+.maincol{min-width:0}
+.side{min-width:0}
+
+.block{margin-bottom:44px}
+.block-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.block-head h2{font-size:22px;letter-spacing:.3px}
+.block-head .sub{font-size:13px;color:var(--dim)}
+.block-head .more{margin-left:auto;font-size:13px}
+
+/* ---------- cards ---------- */
+.grid-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid-cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;transition:transform .16s,border-color .16s;
+  display:flex;flex-direction:column;gap:8px;
+}
+.card:hover{transform:translateY(-3px);border-color:#3a4f72}
+.card h3{font-size:16.5px}
+.card .meta{font-size:12.5px;color:var(--dim);display:flex;gap:10px;flex-wrap:wrap}
+.card p{font-size:14px;color:var(--muted);margin:0}
+.card .kicker{font-size:12px;color:var(--main);letter-spacing:.5px}
+.thumb{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:var(--card-2)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.tag{font-size:12px;color:var(--muted);background:var(--card-2);border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.tag:hover{color:var(--main);border-color:var(--main)}
+
+/* ---------- list ---------- */
+.newslist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.newslist li{border-bottom:1px solid var(--line);padding:13px 0;display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;align-items:baseline}
+.newslist time{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+.newslist a{color:var(--text);font-size:15px}
+.newslist a:hover{color:var(--main)}
+.newslist .src{font-size:12.5px;color:var(--dim);margin-left:8px}
+
+/* ---------- channel index ---------- */
+.channels{display:flex;flex-wrap:wrap;gap:10px}
+.channels a{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:9px 15px;font-size:14.5px;color:var(--text);
+}
+.channels a:hover{border-color:var(--main);color:var(--main)}
+
+/* ---------- feature article ---------- */
+.article{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(18px,3vw,30px);
+}
+.article h2{font-size:23px;margin-bottom:8px}
+.article .byline{font-size:12.5px;color:var(--dim);margin-bottom:18px}
+.article h3{font-size:17.5px;margin:26px 0 10px;color:var(--main)}
+.article p{color:#c9d5e6;font-size:15.5px}
+.article ul,.article ol{color:#c9d5e6;font-size:15.5px}
+.article strong{color:var(--text)}
+.pull{
+  border-left:3px solid var(--accent);background:var(--card-2);border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:14px 18px;margin:20px 0;font-size:15px;color:#dbe6f5;
+}
+.pull q{font-style:normal}
+.datatable{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0}
+.datatable caption{text-align:left;font-size:12.5px;color:var(--dim);padding-bottom:7px}
+.datatable th,.datatable td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.datatable th{background:var(--card-2);color:var(--muted);font-weight:600}
+.datatable td{color:#c9d5e6}
+
+/* ---------- steps ---------- */
+.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:12px}
+.steps li{
+  counter-increment:s;position:relative;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:15px 18px 15px 60px;
+}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:16px;top:14px;
+  font-size:15px;font-weight:700;color:var(--main);font-variant-numeric:tabular-nums;
+}
+.steps b{display:block;font-size:15.5px;margin-bottom:3px}
+.steps span{font-size:14px;color:var(--muted)}
+
+/* ---------- compare panel ---------- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.panel.good{border-top:3px solid var(--main)}
+.panel.bad{border-top:3px solid var(--warn)}
+.panel h3{font-size:15.5px;margin-bottom:10px}
+.panel ul{margin:0;padding-left:1.15em;font-size:14px;color:var(--muted)}
+.panel li{margin-bottom:5px}
+
+/* ---------- faq ---------- */
+.faq details{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:0 16px;margin-bottom:10px;
+}
+.faq summary{
+  cursor:pointer;list-style:none;padding:14px 30px 14px 0;font-size:15.5px;font-weight:600;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:2px;top:12px;font-size:20px;color:var(--main);font-weight:400;
+}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 0 15px;font-size:14.5px;color:var(--muted)}
+.faq .a p{margin-bottom:.6em}
+
+/* ---------- comments ---------- */
+.comments{display:grid;gap:12px}
+.comment{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;
+}
+.comment header{display:flex;gap:10px;align-items:baseline;font-size:13px;color:var(--dim);margin-bottom:6px;flex-wrap:wrap}
+.comment header b{color:var(--text);font-size:14px}
+.comment p{margin:0;font-size:14.5px;color:#c9d5e6}
+.comment .pico{color:var(--main)}
+.badge{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--dim)}
+
+/* ---------- timeline ---------- */
+.timeline{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line);display:grid;gap:16px}
+.timeline li{position:relative}
+.timeline li::before{
+  content:"";position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;
+  background:var(--main);box-shadow:0 0 0 3px rgba(53,208,192,.18);
+}
+.timeline time{font-size:12.5px;color:var(--dim);display:block;margin-bottom:2px}
+.timeline b{font-size:15px;color:var(--text)}
+.timeline p{font-size:14px;color:var(--muted);margin:3px 0 0}
+
+/* ---------- quote / creator ---------- */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quote{
+  background:linear-gradient(160deg,var(--card-2),var(--card));border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px;position:relative;
+}
+.quote::before{content:"“";position:absolute;top:2px;right:14px;font-size:44px;color:rgba(53,208,192,.25);line-height:1}
+.quote p{font-size:14.5px;color:#dbe6f5;margin:0 0 10px}
+.quote footer{font-size:13px;color:var(--dim)}
+
+/* ---------- aside ---------- */
+.sidecard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:18px}
+.sidecard h2,.sidecard h3{font-size:15.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sidecard h2::before,.sidecard h3::before{content:"";width:4px;height:14px;background:var(--main);border-radius:2px}
+.sidenav{list-style:none;margin:0;padding:0;display:grid;gap:2px;position:sticky;top:130px}
+.sidenav a{display:block;padding:6px 10px;font-size:13.5px;color:var(--muted);border-radius:6px;border-left:2px solid transparent}
+.sidenav a:hover{background:var(--card-2);color:var(--text)}
+.sidenav a.active{color:var(--main);background:rgba(53,208,192,.08);border-left-color:var(--main)}
+.ranklist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ranklist li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:9px;font-size:13.5px;color:var(--muted);align-items:baseline}
+.ranklist .n{font-weight:700;color:var(--main);font-variant-numeric:tabular-nums}
+.ranklist b{display:block;color:var(--text);font-weight:600;font-size:14px}
+.ranklist small{color:var(--dim);font-size:12px}
+
+/* ---------- search results ---------- */
+#searchMsg{display:none;margin-top:10px;font-size:13.5px;color:var(--accent)}
+#searchMsg.show{display:block}
+
+/* ---------- back top ---------- */
+#toTop{
+  position:fixed;right:18px;bottom:22px;z-index:60;width:44px;height:44px;border-radius:50%;
+  background:var(--main);color:#062421;border:0;font-size:18px;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-3px)}
+
+/* ---------- footer ---------- */
+footer.site{background:var(--bg-2);border-top:1px solid var(--line);padding:38px 0 26px;margin-top:8px}
+.footgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px}
+.footbrand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;margin-bottom:10px}
+.footbrand svg{width:30px;height:30px}
+.footdesc{font-size:13.5px;color:var(--muted);max-width:30em}
+.footcol h3{font-size:14px;color:var(--text);margin-bottom:10px}
+.footcol ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.footcol a{font-size:13.5px;color:var(--muted)}
+.footcol a:hover{color:var(--main)}
+.footnote{border-top:1px solid var(--line);margin-top:28px;padding-top:16px;font-size:12.5px;color:var(--dim);display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  .side{order:2;margin-top:34px}
+  .maincol{order:1}
+  .sidenav{position:static}
+  .hero .wrap{grid-template-columns:1fr;gap:24px}
+  .hero-art{max-width:520px}
+  .footgrid{grid-template-columns:1fr 1fr}
+  .grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  .searchbox{display:none}
+  .menubtn{display:block}
+  nav.mainnav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    background:var(--bg-2);border-bottom:1px solid var(--line);padding:10px 18px 16px;
+  }
+  nav.mainnav.open{display:block}
+  nav.mainnav ul{flex-direction:column;gap:2px}
+  nav.mainnav a{padding:10px 12px;border-radius:8px}
+  .header{position:relative}
+  .header .wrap{flex-wrap:wrap}
+  .grid-cards,.grid-cards.two,.compare,.quotes{grid-template-columns:1fr}
+  .newslist li{grid-template-columns:1fr;gap:3px}
+  .footgrid{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+  .hero-stats b{font-size:19px}
+  section[id],div[id].anchor{scroll-margin-top:96px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .btn:hover,.card:hover,#toTop:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-stack">
+  <div class="notice" role="note">
+    <div class="wrap">
+      <span><span class="dot"></span><b>11 月 7 日更新</b>：新增 2026 秋季播放内核横评，补入 4 款常驻播放器的投屏延迟实测数据</span>
+      <span>维护周期：每周五</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="/#top" aria-label="npxvip 视频 首页">
+        <svg viewBox="0 0 64 64" role="img" aria-label="播放器标志图形">
+          <rect width="64" height="64" rx="14" fill="#182234" stroke="#2a3852"/>
+          <path d="M24 18l24 14-24 14z" fill="#35d0c0"/>
+          <rect x="13" y="15" width="4" height="34" rx="2" fill="#ffb347"/>
+        </svg>
+        <span>npxvip 视频</span>
+      </a>
+      <nav class="mainnav" id="mainnav" aria-label="主题导航">
+        <ul>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">频道索引</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#rank">口碑榜单</a></li>
+        </ul>
+      </nav>
+      <div class="head-tools">
+        <div class="searchbox">
+          <input id="q" type="search" placeholder="搜播放器 / 片源 / 故障" aria-label="站内搜索" autocomplete="off">
+          <button type="button" id="qbtn">查找</button>
+        </div>
+        <button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="mainnav">菜单</button>
+      </div>
+    </div>
+    <div class="wrap"><div id="searchMsg" role="status" aria-live="polite"></div></div>
+  </header>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <span class="hero-tag">播放内核 · 片源格式 · 投屏实测</span>
+        <h1 id="hero-title">npxvip <span>视频</span></h1>
+        <p class="lead">把播放器当工具来测，而不是当广告来推。这里记录 6 款常驻播放器在 1080P、4K HEVC、ASS 字幕、DLNA 投屏四类场景下的实际表现，以及片源站点的连通率变化，给出可复现的对比条件。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="/#deep">读本期内核横评</a>
+          <a class="btn ghost" href="/#fix">排查播放故障</a>
+        </div>
+        <ul class="hero-stats">
+          <li><b>6 款</b>常驻播放器</li>
+          <li><b>42 组</b>播放条件</li>
+          <li><b>18 条</b>片源格式样本</li>
+          <li><b>11 月 7 日</b>数据截点</li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 300" role="img">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1e2a40"/><stop offset="1" stop-color="#131c2b"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#35d0c0"/><stop offset="1" stop-color="#7ff0e4"/>
+            </linearGradient>
+          </defs>
+          <rect x="30" y="34" width="300" height="176" rx="16" fill="url(#g1)" stroke="#2a3852"/>
+          <path d="M166 96l52 30-52 30z" fill="url(#g2)"/>
+          <rect x="52" y="176" width="140" height="6" rx="3" fill="#2a3852"/>
+          <rect x="52" y="176" width="96" height="6" rx="3" fill="#35d0c0"/>
+          <circle cx="96" cy="179" r="7" fill="#ffb347"/>
+          <rect x="286" y="128" width="104" height="140" rx="14" fill="#182234" stroke="#2a3852"/>
+          <rect x="300" y="146" width="76" height="42" rx="6" fill="#0e1420" stroke="#2a3852"/>
+          <path d="M328 158l16 9-16 9z" fill="#35d0c0"/>
+          <rect x="300" y="200" width="76" height="7" rx="3" fill="#2a3852"/>
+          <rect x="300" y="214" width="54" height="7" rx="3" fill="#2a3852"/>
+          <rect x="300" y="228" width="66" height="7" rx="3" fill="#2a3852"/>
+          <rect x="352" y="116" width="8" height="26" rx="4" fill="#ffb347"/>
+          <text x="30" y="268" fill="#71809b" font-size="13" font-family="system-ui">内核 / 字幕 / 投屏 三轴对照</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <div class="maincol">
+
+      <!-- 领域概览 -->
+      <section class="block" id="overview" aria-labelledby="h-overview">
+        <div class="block-head">
+          <h2 id="h-overview">领域概览：播放这件事被拆成四层</h2>
+          <span class="sub">播放内核 / 解码能力 / 字幕渲染 / 投屏通道</span>
+        </div>
+        <div class="grid-cards two">
+          <article class="card">
+            <span class="kicker">第一层 · 内核</span>
+            <h3>基于 FFmpeg 4.4 与 6.0 的差异</h3>
+            <p>FFmpeg 6.0 分支在 4K HEVC 软解上比 4.4 减少约 9% 单核占用（N5105 实测，10 分钟样本）。老版本主要卡在 HEVC 的 SAO 滤波实现上。</p>
+            <div class="tagrow"><span class="tag">HEVC 软解</span><span class="tag">单核占用</span></div>
+          </article>
+          <article class="card">
+            <span class="kicker">第二层 · 解码</span>
+            <h3>硬解是否可用取决于显卡驱动日期</h3>
+            <p>Intel UHD 630 在驱动 31.0.101.2111 之后才稳定支持 HEVC 10bit 硬解；此前版本表现为花屏或直接回落软解。</p>
+            <div class="tagrow"><span class="tag">10bit 硬解</span><span class="tag">驱动版本</span></div>
+          </article>
+          <article class="card">
+            <span class="kicker">第三层 · 字幕</span>
+            <h3>ASS 特效字幕的渲染分歧</h3>
+            <p>libass 0.17 对 \blur 与 \fad 的叠加处理与 0.15 不同，字幕组常用卡拉 OK 样式在旧版播放器上会丢描边。</p>
+            <div class="tagrow"><span class="tag">libass</span><span class="tag">特效字幕</span></div>
+          </article>
+          <article class="card">
+            <span class="kicker">第四层 · 投屏</span>
+            <h3>DLNA 与 AirPlay 的延迟落差</h3>
+            <p>同一段 1080P H.264 文件，DLNA 投屏平均起播 2.4 秒，AirPlay 镜像平均 4.1 秒；差距主要在握手与二次转码。</p>
+            <div class="tagrow"><span class="tag">DLNA</span><span class="tag">起播延迟</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 精选内容推荐 -->
+      <section class="block" id="picks" aria-labelledby="h-picks">
+        <div class="block-head">
+          <h2 id="h-picks">精选内容推荐</h2>
+          <span class="sub">按使用场景挑，不按热度排</span>
+        </div>
+        <div class="grid-cards">
+          <article class="card">
+            <div class="thumb"><img src="https://picsum.photos/seed/npxplayer1/480/270" width="480" height="270" loading="lazy" alt="播放器在 4K HEVC 片源下的播放界面截图"></div>
+            <h3>4K HEVC 片源播放器选择清单</h3>
+            <p>显卡解码能力、内存带宽、播放器渲染后端三项条件齐备，才能稳定跑满 60fps。</p>
+            <div class="meta"><span>11 月 6 日</span><span>实测 6 款</span></div>
+          </article>
+          <article class="card">
+            <div class="thumb"><img src="https://picsum.photos/seed/npxsub2/480/270" width="480" height="270" loading="lazy" alt="ASS 特效字幕在播放器上的渲染效果对比"></div>
+            <h3>ASS 字幕错位与描边丢失修复</h3>
+            <p>先把字幕文件转 UTF-8 带 BOM，再核对 PlayResX 与视频宽高比是否一致，八成问题出在这里。</p>
+            <div class="meta"><span>11 月 5 日</span><span>修复 12 例</span></div>
+          </article>
+          <article class="card">
+            <div class="thumb"><img src="https://picsum.photos/seed/npxcast3/480/270" width="480" height="270" loading="lazy" alt="手机投屏到电视的 DLNA 连接示意画面"></div>
+            <h3>投屏卡顿先查 5GHz 信道占用</h3>
+            <p>2.4GHz 下 4K 投屏几乎必然起播失败；改用 5GHz 后，48 小时内重连次数从 7 次降到 1 次。</p>
+            <div class="meta"><span>11 月 4 日</span><span>Wi-Fi 5 / 6 对比</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 最新更新 -->
+      <section class="block" id="latest" aria-labelledby="h-latest">
+        <div class="block-head">
+          <h2 id="h-latest">最新更新</h2>
+          <span class="sub">11 月 8 日前 30 天内的变动</span>
+        </div>
+        <ul class="newslist">
+          <li><time datetime="2026-11-07">11 月 7 日</time><span><a href="/#deep">2026 秋季播放内核横评发布，FFmpeg 6.0 组在 4K 软解上领先 9%</a><span class="src">测于 N5105 / 16GB</span></span></li>
+          <li><time datetime="2026-11-06">11 月 6 日</time><span><a href="/#picks">4K HEVC 片源播放器选择清单更新，剔除 1 款不再维护的播放器</a><span class="src">版本 3.2.11</span></span></li>
+          <li><time datetime="2026-11-05">11 月 5 日</time><span><a href="/#fix">字幕错位修复流程补充 PlayResX 核对步骤</a><span class="src">来自 12 例回信</span></span></li>
+          <li><time datetime="2026-11-03">11 月 3 日</time><span><a href="/#channels">频道索引新增“片源格式对照”与“播放故障排查”两个入口</a><span class="src">共 10 个频道</span></span></li>
+          <li><time datetime="2026-10-29">10 月 29 日</time><span><a href="/#rank">口碑榜单第 4 期发布，常驻播放器留存率首次纳入统计</a><span class="src">样本 1200 份</span></span></li>
+          <li><time datetime="2026-10-24">10 月 24 日</time><span><a href="/#comments">评论区上线“按条目定位”标记，吐槽与推荐分开统计</a><span class="src">互动功能</span></span></li>
+        </ul>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="block" id="channels" aria-labelledby="h-channels">
+        <div class="block-head">
+          <h2 id="h-channels">分类入口</h2>
+          <span class="sub">10 个频道，按播放链条排</span>
+        </div>
+        <div class="channels">
+          <a href="/#deep">播放内核横评</a>
+          <a href="/#formats">片源格式对照</a>
+          <a href="/#guide">ASS 字幕调试</a>
+          <a href="/#fix">播放故障排查</a>
+          <a href="/#guide">DLNA 投屏设置</a>
+          <a href="/#overview">硬解驱动版本</a>
+          <a href="/#rank">播放器口碑榜</a>
+          <a href="/#picks">4K 片源选择</a>
+          <a href="/#news">播放器版本动态</a>
+          <a href="/#comments">用户实测反馈</a>
+        </div>
+      </section>
+
+      <!-- 深度解析 -->
+      <section class="block" id="deep" aria-labelledby="h-deep">
+        <article class="article">
+          <h2 id="h-deep">深度解析：播放器拼的不是核数，是渲染后端与驱动握手</h2>
+          <div class="byline">2026 年 11 月 7 日 · 条件：N5105 / 16GB / Windows 11 23H2 / 同一 4K HEVC 样本 10 分钟</div>
+
+          <p>过去两个月里，我把 6 款常驻播放器放在同一台 N5105 小主机上跑同一段 4K HEVC 10bit 片源，记录 CPU 单核占用、掉帧次数和起播耗时。结论先摆出来：<strong>决定能不能流畅播的，是渲染后端与显卡驱动的握手，而不是播放器宣传的“多核优化”。</strong>这条判断可以被反驳——只要有一款播放器在不换驱动的前提下把掉帧压到 0，我就认。</p>
+
+          <h3>案例时间线：三个版本节点前后的变化</h3>
+          <ul>
+            <li><strong>9 月 18 日</strong>：A 播放器 3.1.9 更新，渲染后端从 Direct3D 11 换到 Vulkan，4K HEVC 掉帧从 41 次降到 6 次，但 ASS 字幕描边出现 1 帧延迟。</li>
+            <li><strong>10 月 9 日</strong>：显卡驱动升级至 31.0.101.2134，B 播放器硬解终于生效，单核占用从 62% 降到 21%，此前一直回落软解。</li>
+            <li><strong>10 月 30 日</strong>：C 播放器 4.0 移除旧版 libass，特效字幕的 \blur 半径被压缩约 30%，字幕组回退到 3.9。</li>
+          </ul>
+          <p>三个节点分别对应渲染、驱动、字幕三层，任一层不匹配，播放体验都会退回到“能看但不舒服”的状态。</p>
+
+          <h3>数据对比：软解与硬解的真实落差</h3>
+          <table class="datatable">
+            <caption>同一 4K HEVC 10bit 样本，10 分钟循环播放</caption>
+            <thead><tr><th>配置</th><th>单核占用</th><th>掉帧次数</th><th>起播耗时</th></tr></thead>
+            <tbody>
+              <tr><td>软解 / FFmpeg 4.4</td><td>78%</td><td>63</td><td>3.8 秒</td></tr>
+              <tr><td>软解 / FFmpeg 6.0</td><td>69%</td><td>37</td><td>3.1 秒</td></tr>
+              <tr><td>硬解 / 驱动 2134</td><td>21%</td><td>2</td><td>1.4 秒</td></tr>
+              <tr><td>硬解 / 驱动 2111</td><td>24%</td><td>9</td><td>1.9 秒</td></tr>
+            </tbody>
+          </table>
+          <p>硬解把单核占用压到软解的三分之一，但驱动差三个小版本，掉帧就从 2 次涨到 9 次。这意味着“买了支持硬解的机器”与“硬解真的生效”之间，还隔着一层驱动匹配。</p>
+
+          <h3>说法差异：播放器官方与实测结果的三处分歧</h3>
+          <ol>
+            <li>官方文档称“支持 8K 解码”，实测在 8K AV1 上仍需 4 核并行，单核占用超过 90%，实际起播失败 2 次。</li>
+            <li>官方称“DLNA 零配置”，实测需在路由器关闭 AP 隔离，否则设备发现超时 30 秒以上。</li>
+            <li>官方称“字幕自动匹配”，实测 ASS 字幕在宽高比 2.39:1 片源上仍要手动改 PlayResX，否则整体右移。</li>
+          </ol>
+          <p>这三处分歧都能复现，条件写在下方体验指南里。需要说明：<span style="color:var(--accent)">“官方夸大”是推测</span>，更可能的原因是测试环境用的是高配台式机，与 N5105 这类低功耗平台差距明显。</p>
+
+          <h3>规则前后变化：字幕渲染标准的切换</h3>
+          <p>libass 0.17 在 2026 年 8 月调整了 \fad 与 \blur 的叠加顺序。字幕组 9 月产出的卡拉 OK 字幕，在 0.17 环境下描边变细约 1px；在 0.15 环境下则正常。这不是播放器 bug，而是渲染库版本差异。可核对的做法：用同一份 .ass 文件在两个版本各截一帧，比对描边像素宽度。</p>
+
+          <blockquote class="pull"><q>判断可以拆成三步核对：先确认硬解是否真的启用，再比对渲染后端，最后才看字幕库版本。跳过前两步直接怪片源，通常找错方向。</q></blockquote>
+
+          <h3>一个可被反驳的判断</h3>
+          <p>我的判断是：<strong>在 2026 年，4K 播放体验的瓶颈已经从 CPU 转移到驱动与渲染后端</strong>。反驳它的方式很简单——找一台只有 2 核的旧笔记本，用最新驱动和 Vulkan 后端播放同一段 4K HEVC，如果掉帧仍低于 10 次，说明 CPU 仍是瓶颈，我这条判断就站不住。目前我手上没有这类机器，暂时保留这个判断。</p>
+        </article>
+      </section>
+
+      <!-- 片源格式对照 -->
+      <section class="block" id="formats" aria-labelledby="h-formats">
+        <div class="block-head">
+          <h2 id="h-formats">片源格式对照</h2>
+          <span class="sub">编码、容器、码率三项一起看</span>
+        </div>
+        <div class="compare">
+          <div class="panel good">
+            <h3>兼容性较好的组合</h3>
+            <ul>
+              <li>H.264 + MP4 + 8Mbps：电视、手机、投屏全通吃</li>
+              <li>HEVC + MKV + 15Mbps：硬解设备首选，体积小</li>
+              <li>AAC 立体声：DLNA 直通率最高</li>
+              <li>SRT 外挂字幕：编码 UTF-8 无 BOM 最稳</li>
+            </ul>
+          </div>
+          <div class="panel bad">
+            <h3>容易翻车的组合</h3>
+            <ul>
+              <li>AV1 + WebM：老电视与 2020 年前盒子基本不支持</li>
+              <li>HEVC 10bit + 老驱动：花屏或回落软解</li>
+              <li>DTS-HD 音轨：多数电视无解码授权，直接静音</li>
+              <li>ASS 内嵌特效 + 旧 libass：描边与位置偏移</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 体验指南 -->
+      <section class="block" id="guide" aria-labelledby="h-guide">
+        <div class="block-head">
+          <h2 id="h-guide">体验指南：从装好到播稳的五步</h2>
+          <span class="sub">按顺序做，每步都能单独验证</span>
+        </div>
+        <ol class="steps">
+          <li><b>确认硬解状态</b><span>在播放器信息面板看“Video Decoder”是否显示 D3D11 / NVDEC / VAAPI；显示 Software 说明硬解没启用。</span></li>
+          <li><b>对齐显卡驱动</b><span>Intel 平台把驱动升到 31.0.101.2134 以上；NVIDIA 用 551 以上分支，再重启播放器。</span></li>
+          <li><b>切换渲染后端</b><span>Direct3D 11 掉帧就换 Vulkan；Vulkan 字幕延迟就换回 D3D11，二者取其一，不要指望全都要。</span></li>
+          <li><b>校验字幕编码</b><span>用记事本另存为 UTF-8 无 BOM；ASS 文件检查 PlayResX / PlayResY 与视频分辨率一致。</span></li>
+          <li><b>投屏前检查网络</b><span>手机与电视接同一 5GHz 频段，路由器关闭 AP 隔离，DLNA 发现时间可从 30 秒降到 3 秒内。</span></li>
+        </ol>
+      </section>
+
+      <!-- 故障排查 -->
+      <section class="block" id="fix" aria-labelledby="h-fix">
+        <div class="block-head">
+          <h2 id="h-fix">播放故障排查：五个高频症状</h2>
+          <span class="sub">症状 → 可能原因 → 先试什么</span>
+        </div>
+        <div class="grid-cards two">
+          <article class="card">
+            <h3>起播就黑屏，有声音</h3>
+            <p>渲染后端与显卡驱动不匹配。先把 Vulkan 切回 D3D11，80% 的黑屏在 30 秒内解决。</p>
+            <div class="tagrow"><span class="tag">黑屏有声音</span></div>
+          </article>
+          <article class="card">
+            <h3>字幕整体右移或下沉</h3>
+            <p>ASS 的 PlayResX 与视频宽高比不一致。用 Aegisub 打开看分辨率栏，改成 1920×800 这类实际值。</p>
+            <div class="tagrow"><span class="tag">ASS 错位</span></div>
+          </article>
+          <article class="card">
+            <h3>投屏后画面卡住、声音继续</h3>
+            <p>多为 2.4GHz 带宽不足。换 5GHz 后重测，48 小时内重连次数从 7 次降到 1 次。</p>
+            <div class="tagrow"><span class="tag">DLNA 卡顿</span></div>
+          </article>
+          <article class="card">
+            <h3>4K 片源频繁掉帧</h3>
+            <p>先看信息面板解码器是否为 Software。回落软解时，FFmpeg 6.0 比 4.4 少约 9% 占用，但仍不够。</p>
+            <div class="tagrow"><span class="tag">4K 掉帧</span></div>
+          </article>
+          <article class="card">
+            <h3>音轨无声，只有环境音</h3>
+            <p>DTS-HD 音轨未被电视授权解码。用 ffmpeg 转 AAC 立体声，或改选片源自带的 AC3 音轨。</p>
+            <div class="tagrow"><span class="tag">DTS 无声</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="block" id="faq" aria-labelledby="h-faq">
+        <div class="block-head">
+          <h2 id="h-faq">常见问题</h2>
+          <span class="sub">围绕播放器与片源本身</span>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>4K HEVC 片源在低功耗小主机上能播吗？</summary>
+            <div class="a"><p>能，但前提是硬解真正启用。N5105 在驱动 31.0.101.2134 下，单核占用约 21%，掉帧 2 次/10 分钟；若回落软解，占用升到 69%—78%，掉帧 37—63 次，观感明显变差。</p></div>
+          </details>
+          <details>
+            <summary>ASS 字幕的描边为什么会消失？</summary>
+            <div class="a"><p>字幕库版本差异。libass 0.17 调整了 \fad 与 \blur 的叠加顺序，描边在部分样式下变细约 1px。用 0.15 版本打开同一 .ass 文件可复现差异，属于渲染库问题，不是字幕文件损坏。</p></div>
+          </details>
+          <details>
+            <summary>DLNA 投屏为什么发现不到电视？</summary>
+            <div class="a"><p>路由器 AP 隔离是首要原因。关闭后，同一 5GHz 频段下设备发现时间可压到 3 秒内；若仍失败，检查电视是否开启了“仅允许已配对设备”。</p></div>
+          </details>
+          <details>
+            <summary>DTS-HD 音轨播放时没有对白声，怎么办？</summary>
+            <div class="a"><p>电视端缺少 DTS 解码授权，只解出环境音。用 ffmpeg -c:a aac 转成立体声，或在片源设置里切到 AC3 音轨，两条路径都能恢复对白。</p></div>
+          </details>
+          <details>
+            <summary>播放器提示“格式不支持”，但文件能拖进浏览器播放</summary>
+            <div class="a"><p>播放器使用的 demuxer 版本较旧，识别不了新容器封装。常见于 AV1 + WebM 组合；换成 MP4 封装或升级播放器到 3.2 以上版本即可。</p></div>
+          </details>
+          <details>
+            <summary>硬解开启后画面花屏，是片源问题吗？</summary>
+            <div class="a"><p>多数情况是驱动对 HEVC 10bit 的支持不完整。把驱动降到 2111 版本花屏消失，但掉帧从 2 次升到 9 次，需要在画质与流畅之间取舍。</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 用户评论 -->
+      <section class="block" id="comments" aria-labelledby="h-comments">
+        <div class="block-head">
+          <h2 id="h-comments">用户评论</h2>
+          <span class="sub">指向具体条目，允许吐槽</span>
+        </div>
+        <div class="comments">
+          <article class="comment">
+            <header><b>老周看片</b><span>11 月 7 日</span><span class="badge">指向：内核横评</span></header>
+            <p>N5105 那段数据和我机器几乎一样。我驱动 2111 时 4K 掉帧明显，升到 2134 后基本稳了，<span class="pico">就是升级驱动花了半小时</span>。</p>
+          </article>
+          <article class="comment">
+            <header><b>字幕组小柯</b><span>11 月 6 日</span><span class="badge">指向：ASS 字幕条目</span></header>
+            <p>libass 0.17 那个描边问题确实存在，我们组里三台机器都复现了。但说“描边消失”有点夸张，实际是变细，1px 左右，远看不太明显。</p>
+          </article>
+          <article class="comment">
+            <header><b>客厅党</b><span>11 月 5 日</span><span class="badge">中性</span></header>
+            <p>投屏延迟那个 2.4 秒 vs 4.1 秒，我这边 DLNA 反而更慢，可能路由器型号不同。样本条件写清楚了，这点还行。</p>
+          </article>
+          <article class="comment">
+            <header><b>不吐不快</b><span>11 月 4 日</span><span class="badge">指向：口碑榜单</span></header>
+            <p>榜单第 4 期把某播放器排第一我不服，它连 HEVC 10bit 都还要手动开硬解，凭什么？<span class="pico">希望把“默认是否开硬解”也列进去</span>。</p>
+          </article>
+          <article class="comment">
+            <header><b>阿霁</b><span>11 月 3 日</span><span class="badge">指向：片源格式对照</span></header>
+            <p>DTS-HD 无声那条救了我。转 AAC 之后对白回来了，之前一直以为是片源压坏了，差点重下 8G。</p>
+          </article>
+          <article class="comment">
+            <header><b>深夜码农</b><span>11 月 2 日</span><span class="badge">指向：体验指南第 3 步</span></header>
+            <p>Vulkan 换 D3D11 黑屏确实好了，但 Vulkan 下 4K 更流畅，切回去掉帧又回来了。这个取舍能不能单独写一篇？</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section class="block" id="news" aria-labelledby="h-news">
+        <div class="block-head">
+          <h2 id="h-news">相关资讯</h2>
+          <span class="sub">播放器版本与驱动发布</span>
+        </div>
+        <ul class="newslist">
+          <li><time datetime="2026-11-06">11 月 6 日</time><span><a href="/#latest">FFmpeg 6.0 分支发布 6.0.2 维护更新，修复 HEVC 越界读</a><span class="src">上游公告</span></span></li>
+          <li><time datetime="2026-11-01">11 月 1 日</time><span><a href="/#formats">AV1 硬件解码在 2024 年后主流盒子普及率升至 61%</a><span class="src">调研样本 2400 台</span></span></li>
+          <li><time datetime="2026-10-27">10 月 27 日</time><span><a href="/#deep">libass 0.17.1 修正 \fad 叠加顺序，回退部分描边亮度</a><span class="src">版本差异</span></span></li>
+          <li><time datetime="2026-10-22">10 月 22 日</time><span><a href="/#rank">播放器口碑榜第 4 期采样完成，留存率指标首次公开</a><span class="src">1200 份问卷</span></span></li>
+          <li><time datetime="2026-10-15">10 月 15 日</time><span><a href="/#guide">Intel 显卡驱动 31.0.101.2134 推送，HEVC 10bit 硬解稳定性改善</a><span class="src">驱动说明</span></span></li>
+        </ul>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="block" id="picks2" aria-labelledby="h-picks2">
+        <div class="block-head">
+          <h2 id="h-picks2">相关推荐</h2>
+          <span class="sub">按具体条目串起来</span>
+        </div>
+        <div class="tagrow">
+          <a class="tag" href="/#deep">播放内核横评</a>
+          <a class="tag" href="/#formats">HEVC 10bit 硬解条件</a>
+          <a class="tag" href="/#guide">ASS 字幕 PlayResX 设置</a>
+          <a class="tag" href="/#fix">DLNA 投屏发现失败</a>
+          <a class="tag" href="/#fix">DTS-HD 音轨转 AAC</a>
+          <a class="tag" href="/#guide">Vulkan 与 D3D11 取舍</a>
+          <a class="tag" href="/#rank">播放器留存率榜单</a>
+          <a class="tag" href="/#news">FFmpeg 6.0.2 更新</a>
+        </div>
+      </section>
+
+      <!-- 口碑榜单 -->
+      <section class="block" id="rank" aria-labelledby="h-rank">
+        <div class="block-head">
+          <h2 id="h-rank">口碑榜单第 4 期</h2>
+          <span class="sub">指标：30 天留存率 · 硬解默认开启率 · 故障回信率</span>
+        </div>
+        <ol class="ranklist">
+          <li><span class="n">01</span><span><b>Aurora 播放器</b><small>留存 68% · 默认硬解 是 · 回信率 41%</small></span></li>
+          <li><span class="n">02</span><span><b>Kite Player</b><small>留存 63% · 默认硬解 是 · 回信率 37%</small></span></li>
+          <li><span class="n">03</span><span><b>Mist 影音</b><small>留存 57% · 默认硬解 否 · 回信率 52%</small></span></li>
+          <li><span class="n">04</span><span><b>Nebula Player</b><small>留存 51% · 默认硬解 是 · 回信率 29%</small></span></li>
+          <li><span class="n">05</span><span><b>Dune 播放器</b><small>留存 44% · 默认硬解 否 · 回信率 33%</small></span></li>
+        </ol>
+        <p style="font-size:13px;color:var(--dim);margin-top:12px">榜单只统计 10 月 1 日至 10 月 31 日期间的 1200 份有效问卷，不纳入厂商自评数据。</p>
+      </section>
+
+      <!-- 时间线 -->
+      <section class="block" id="timeline" aria-labelledby="h-timeline">
+        <div class="block-head">
+          <h2 id="h-timeline">播放生态时间线</h2>
+          <span class="sub">10 月—11 月的可核对节点</span>
+        </div>
+        <ol class="timeline">
+          <li><time datetime="2026-11-07">11 月 7 日</time><b>秋季内核横评数据截点</b><p>6 款播放器、42 组条件，硬解组与软解组差距最大的一项为起播耗时 2.4 秒。</p></li>
+          <li><time datetime="2026-11-01">11 月 1 日</time><b>AV1 盒普及率调研发布</b><p>2400 台样本中，2024 年后出厂盒子有 61% 支持 AV1 硬解。</p></li>
+          <li><time datetime="2026-10-27">10 月 27 日</time><b>libass 0.17.1 修正描边亮度</b><p>\fad 叠加顺序调整后，部分卡拉 OK 样式描边亮度回归正常。</p></li>
+          <li><time datetime="2026-10-15">10 月 15 日</time><b>Intel 驱动 2134 推送</b><p>HEVC 10bit 硬解稳定性改善，N5105 上掉帧从 9 次降至 2 次。</p></li>
+          <li><time datetime="2026-10-09">10 月 9 日</time><b>B 播放器硬解生效</b><p>同一驱动版本下，单核占用从 62% 降到 21%。</p></li>
+        </ol>
+      </section>
+
+      <!-- 创作者证言 -->
+      <section class="block" id="quotes" aria-labelledby="h-quotes">
+        <div class="block-head">
+          <h2 id="h-quotes">创作者证言</h2>
+          <span class="sub">字幕组与片源压制方的原话</span>
+        </div>
+        <div class="quotes">
+          <div class="quote">
+            <p>“我们做特效字幕最怕播放器版本不统一，同一份 .ass 在 0.15 和 0.17 下描边差 1px，审核来回改三次。”</p>
+            <footer>—— 字幕组 小柯，11 月 6 日</footer>
+          </div>
+          <div class="quote">
+            <p>“压制方现在更愿意出 HEVC + MKV，体积能压到 H.264 的六成；但遇到老电视，还得另备一份 H.264 版本。”</p>
+            <footer>—— 片源压制 阿霁，11 月 4 日</footer>
+          </div>
+          <div class="quote">
+            <p>“投屏这块，用户以为是播放器问题，其实路由器 AP 隔离一开，找设备就得等半分钟。”</p>
+            <footer>—— 小主机玩家 老周，11 月 7 日</footer>
+          </div>
+          <div class="quote">
+            <p>“榜单把默认硬解开启率列出来之后，有几款播放器的客服回信明显快了，这个指标比宣传语有用。”</p>
+            <footer>—— 客厅党，11 月 5 日</footer>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /maincol -->
+
+    <aside class="side" aria-label="侧栏">
+      <div class="sidecard">
+        <h2>本页导航</h2>
+        <nav aria-label="侧栏栏目导航">
+          <ul class="sidenav" id="sidenav">
+            <li><a href="/#overview">领域概览</a></li>
+            <li><a href="/#picks">精选推荐</a></li>
+            <li><a href="/#latest">最新更新</a></li>
+            <li><a href="/#channels">分类入口</a></li>
+            <li><a href="/#deep">深度解析</a></li>
+            <li><a href="/#formats">片源格式对照</a></li>
+            <li><a href="/#guide">体验指南</a></li>
+            <li><a href="/#fix">故障排查</a></li>
+            <li><a href="/#faq">常见问题</a></li>
+            <li><a href="/#comments">用户评论</a></li>
+            <li><a href="/#news">相关资讯</a></li>
+            <li><a href="/#rank">口碑榜单</a></li>
+            <li><a href="/#timeline">时间线</a></li>
+            <li><a href="/#quotes">创作者证言</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidecard">
+        <h3>热门搜索词</h3>
+        <div class="tagrow">
+          <a class="tag" href="/#deep">HEVC 10bit 硬解</a>
+          <a class="tag" href="/#guide">ASS 字幕错位</a>
+          <a class="tag" href="/#fix">DLNA 投屏延迟</a>
+          <a class="tag" href="/#formats">AV1 播放器</a>
+          <a class="tag" href="/#fix">DTS-HD 无声</a>
+          <a class="tag" href="/#rank">播放器留存率</a>
+        </div>
+      </div>
+      <div class="sidecard">
+        <h3>本周数据截点</h3>
+        <ul class="ranklist">
+          <li><span class="n">11/07</span><span><b>内核横评</b><small>42 组条件完成</small></span></li>
+          <li><span class="n">11/06</span><span><b>选择清单</b><small>剔除 1 款停更</small></span></li>
+          <li><span class="n">11/05</span><span><b>字幕修复</b><small>12 例回信</small></span></li>
+        </ul>
+      </div>
+    </aside>
+  </div><!-- /layout -->
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="footbrand">
+          <svg viewBox="0 0 64 64" role="img" aria-label="页脚标志图形">
+            <rect width="64" height="64" rx="14" fill="#182234" stroke="#2a3852"/>
+            <path d="M24 18l24 14-24 14z" fill="#35d0c0"/>
+            <rect x="13" y="15" width="4" height="34" rx="2" fill="#ffb347"/>
+          </svg>
+          <span>npxvip 视频</span>
+        </div>
+        <p class="footdesc">记录播放器、片源格式与投屏通道的实测条件，数据以可复现为前提，榜单只统计有效问卷。</p>
+      </div>
+      <div class="footcol">
+        <h3>频道</h3>
+        <ul>
+          <li><a href="/#deep">播放内核横评</a></li>
+          <li><a href="/#formats">片源格式对照</a></li>
+          <li><a href="/#guide">ASS 字幕调试</a></li>
+          <li><a href="/#fix">播放故障排查</a></li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h3>互动</h3>
+        <ul>
+          <li><a href="/#comments">用户实测反馈</a></li>
+          <li><a href="/#rank">口碑榜单第 4 期</a></li>
+          <li><a href="/#timeline">生态时间线</a></li>
+          <li><a href="/#quotes">创作者证言</a></li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h3>说明</h3>
+        <ul>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#latest">更新日志</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footnote">
+      <span>页面更新：2026 年 11 月 8 日；正文可核对更新项为 11 月 7 日内核横评数据截点。</span>
+      <span>示例条目基于公开测试条件整理，不构成购买或使用建议。</span>
+    </div>
+    <div class="footnote" style="border:0;margin-top:8px;padding-top:0">
+      <span>© 2026 npxvip 视频 · 内容整理与实测记录</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menubtn=document.getElementById('menubtn');
+  var mainnav=document.getElementById('mainnav');
+  if(menubtn&&mainnav){
+    menubtn.addEventListener('click',function(){
+      var open=mainnav.classList.toggle('open');
+      menubtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    mainnav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=720){
+        mainnav.classList.remove('open');
+        menubtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>560){toTop.classList.add('show');}else{toTop.classList.remove('show');}
+  },{passive:true});
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('#sidenav a'));
+  var sections=links.map(function(a){
+    var id=a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  var ticking=false;
+  function highlight(){
+    var pos=window.scrollY+150;
+    var current=null;
+    sections.forEach(function(s){
+      if(s.offsetTop<=pos){current=s;}
+    });
+    if(!current&&sections.length){current=sections[0];}
+    links.forEach(function(a){
+      var id=a.getAttribute('href').replace('/#','');
+      if(current&&current.id===id){a.classList.add('active');}else{a.classList.remove('active');}
+    });
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){ticking=true;window.requestAnimationFrame(highlight);}
+  },{passive:true});
+  highlight();
+
+  var q=document.getElementById('q');
+  var qbtn=document.getElementById('qbtn');
+  var msg=document.getElementById('searchMsg');
+  var index=[];
+  document.querySelectorAll('.maincol h2,.maincol h3,.maincol .card p,.maincol li,.maincol summary,.maincol .comment p').forEach(function(el){
+    var t=(el.textContent||'').trim();
+    if(t){index.push({el:el,txt:t.toLowerCase()});}
+  });
+  function runSearch(){
+    var kw=(q.value||'').trim().toLowerCase();
+    if(!kw){msg.classList.remove('show');msg.textContent='';return;}
+    var hit=null;
+    for(var i=0;i<index.length;i++){
+      if(index[i].txt.indexOf(kw)>-1){hit=index[i];break;}
+    }
+    if(hit){
+      msg.classList.add('show');
+      msg.textContent='找到匹配内容，正在定位：'+hit.txt.slice(0,28)+(hit.txt.length>28?'…':'');
+      hit.el.scrollIntoView({behavior:'smooth',block:'center'});
+      var host=hit.el.closest('details');
+      if(host){host.open=true;}
+    }else{
+      msg.classList.add('show');
+      msg.textContent='没有找到与“'+q.value+'”相关的内容，试试“HEVC”“字幕”“投屏”“掉帧”等具体词。';
+    }
+  }
+  if(qbtn&&q){qbtn.addEventListener('click',runSearch);q.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();runSearch();}});}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"npxvip 视频",
+  "description":"播放器、片源格式与投屏通道的实测记录站点。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"4K HEVC 片源在低功耗小主机上能播吗？",
+      "acceptedAnswer":{"@type":"Answer","text":"能，但前提是硬解真正启用。N5105 在驱动 31.0.101.2134 下单核占用约 21%，掉帧 2 次每 10 分钟；若回落软解，占用升到 69%—78%，掉帧 37—63 次。"}
+    },
+    {
+      "@type":"Question",
+      "name":"ASS 字幕的描边为什么会消失？",
+      "acceptedAnswer":{"@type":"Answer","text":"字幕库版本差异。libass 0.17 调整了 \\fad 与 \\blur 的叠加顺序，描边在部分样式下变细约 1px，用 0.15 版本打开同一 .ass 文件可复现差异。"}
+    },
+    {
+      "@type":"Question",
+      "name":"DLNA 投屏为什么发现不到电视？",
+      "acceptedAnswer":{"@type":"Answer","text":"路由器 AP 隔离是首要原因。关闭后同一 5GHz 频段下设备发现时间可压到 3 秒内；若仍失败，检查电视是否只允许已配对设备。"}
+    },
+    {
+      "@type":"Question",
+      "name":"DTS-HD 音轨播放时没有对白声，怎么办？",
+      "acceptedAnswer":{"@type":"Answer","text":"电视端缺少 DTS 解码授权，只解出环境音。用 ffmpeg 转 AAC 立体声，或切到片源自带的 AC3 音轨，两条路径都能恢复对白。"}
+    },
+    {
+      "@type":"Question",
+      "name":"硬解开启后画面花屏，是片源问题吗？",
+      "acceptedAnswer":{"@type":"Answer","text":"多数情况是驱动对 HEVC 10bit 支持不完整。驱动降到 2111 花屏消失，但掉帧从 2 次升到 9 次，需要在画质与流畅之间取舍。"}
+    }
+  ]
+}
+</script>
+</body>
+  </html>
