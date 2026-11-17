@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1000欧洲人体-当代人体摄影观察与作品索引</title>
+<meta name="description" content="1000欧洲人体聚焦欧洲当代人体摄影与写生作品，整理1000欧洲人体相关的展览、图集、创作方法与观看伦理，含时间线、分类索引与体验指南，方便检索与辨别。">
+<meta name="keywords" content="1000 欧洲 人体">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c2b2e'/%3E%3Ccircle cx='32' cy='26' r='11' fill='none' stroke='%23d9a46b' stroke-width='2.5'/%3E%3Cpath d='M18 54c2-11 8-16 14-16s12 5 14 16' fill='none' stroke='%23d9a46b' stroke-width='2.5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1c2b2e;
+  --ink-soft:#415255;
+  --paper:#f5f1e9;
+  --paper-2:#ece5d8;
+  --card:#fffdf8;
+  --line:#d6cdba;
+  --accent:#b5623a;
+  --accent-2:#5f7f6f;
+  --gold:#c79a55;
+  --radius-s:6px;
+  --radius-m:12px;
+  --radius-l:20px;
+  --shadow-s:0 1px 2px rgba(28,43,46,.08);
+  --shadow-m:0 6px 20px rgba(28,43,46,.10);
+  --fs-h1:clamp(1.9rem,4.4vw,3.2rem);
+  --fs-h2:clamp(1.35rem,2.6vw,1.85rem);
+  --fs-h3:1.08rem;
+  --fs-body:1rem;
+  --fs-small:.86rem;
+  --gap:clamp(1rem,2.5vw,1.75rem);
+  --stick:96px;
+  --maxw:1200px;
+  --font-title:"Noto Serif SC","Songti SC","STSong",serif;
+  --font-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--font-title);line-height:1.32;margin:0}
+p{margin:0 0 .9em}
+section{scroll-margin-top:var(--stick)}
+a,button{outline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:.6em 1em;z-index:200}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- 吸顶区 ---------- */
+.topbar{
+  background:var(--ink);
+  color:#e9e0cd;
+  font-size:.8rem;
+  letter-spacing:.02em;
+}
+.topbar .wrap{
+  max-width:var(--maxw);margin:0 auto;padding:.45em var(--gap);
+  display:flex;flex-wrap:wrap;gap:.4em 1.2em;align-items:center;
+}
+.topbar b{color:var(--gold);font-weight:600}
+.topbar .dot{opacity:.5}
+
+.stickwrap{
+  position:sticky;top:0;z-index:120;
+}
+.sitehead{
+  background:rgba(245,241,233,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-s);
+}
+.sitehead .wrap{
+  max-width:var(--maxw);margin:0 auto;padding:.6em var(--gap);
+  display:flex;align-items:center;gap:var(--gap);
+}
+.brand{display:flex;align-items:center;gap:.6em;text-decoration:none;flex-shrink:0}
+.brand svg{width:38px;height:38px}
+.brand .bt{
+  font-family:var(--font-title);font-weight:700;font-size:1.06rem;line-height:1.15;
+  letter-spacing:.04em;
+}
+.brand .bt small{display:block;font-family:var(--font-body);font-weight:400;font-size:.62rem;letter-spacing:.14em;color:var(--ink-soft)}
+nav.mainnav{flex:1;min-width:0}
+nav.mainnav ul{
+  list-style:none;margin:0;padding:0;display:flex;gap:.2em;
+  overflow-x:auto;scrollbar-width:thin;
+}
+nav.mainnav a{
+  display:block;padding:.5em .7em;font-size:.88rem;text-decoration:none;
+  color:var(--ink-soft);white-space:nowrap;border-radius:var(--radius-s);
+  transition:background .18s,color .18s;
+}
+nav.mainnav a:hover{background:var(--paper-2);color:var(--ink)}
+nav.mainnav a.active{color:var(--accent);background:#f0e7d7;font-weight:600}
+.headtools{display:flex;align-items:center;gap:.5em;flex-shrink:0}
+.searchbox{position:relative;display:flex;align-items:center}
+.searchbox input{
+  width:150px;padding:.42em .6em;font-size:.85rem;font-family:inherit;
+  border:1px solid var(--line);border-radius:var(--radius-s);background:var(--card);
+  color:var(--ink);transition:width .2s;
+}
+.searchbox input:focus{width:200px}
+.searchbox button{
+  position:absolute;right:2px;top:50%;transform:translateY(-50%);
+  border:0;background:none;cursor:pointer;padding:.25em .4em;font-size:.85rem;color:var(--ink-soft);
+}
+.searchmsg{
+  position:absolute;top:calc(100% + 6px);right:0;width:230px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  box-shadow:var(--shadow-m);padding:.6em .8em;font-size:.8rem;display:none;z-index:30;
+}
+.searchmsg.show{display:block}
+.menubtn{
+  display:none;border:1px solid var(--line);background:var(--card);
+  border-radius:var(--radius-s);padding:.4em .6em;cursor:pointer;font-size:.9rem;color:var(--ink);
+}
+@media (max-width:900px){
+  nav.mainnav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    background:var(--card);border-bottom:1px solid var(--line);
+    max-height:70vh;overflow:auto;box-shadow:var(--shadow-m);
+  }
+  nav.mainnav.open{display:block}
+  nav.mainnav ul{flex-direction:column;padding:.6em var(--gap);gap:0}
+  nav.mainnav a{padding:.7em .4em;border-bottom:1px solid var(--paper-2);border-radius:0}
+  .menubtn{display:inline-block}
+  .sitehead .wrap{position:relative}
+  .searchbox input{width:110px}
+  .searchbox input:focus{width:130px}
+}
+@media (max-width:560px){
+  .headtools .searchbox{display:none}
+  .topbar{font-size:.74rem}
+}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1200px 380px at 78% -10%, #e6d9c2 0%, transparent 60%),
+    linear-gradient(180deg,#f5f1e9 0%,#efe8db 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{
+  max-width:var(--maxw);margin:0 auto;padding:clamp(1.8rem,5vw,3.6rem) var(--gap);
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:var(--gap);align-items:center;
+}
+.hero-copy{position:relative;z-index:2;max-width:36em}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.45em;font-size:.76rem;letter-spacing:.16em;
+  color:var(--accent);font-weight:600;text-transform:uppercase;margin-bottom:.8em;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+.hero h1{font-size:var(--fs-h1);letter-spacing:.02em;margin-bottom:.5em}
+.hero .lede{color:var(--ink-soft);font-size:1.02rem;max-width:32em}
+.hero .lede strong{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7em;margin-top:1.3em}
+.btn{
+  display:inline-block;text-decoration:none;padding:.62em 1.25em;border-radius:999px;
+  font-size:.92rem;font-weight:600;transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn-primary{background:var(--ink);color:#f5efe2;box-shadow:var(--shadow-s)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-m)}
+.btn-ghost{border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btn-ghost:hover{transform:translateY(-2px);background:#fff}
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:1.4em;margin-top:1.6em;padding-top:1.1em;border-top:1px solid var(--line);
+}
+.hero-stats div{font-size:.82rem;color:var(--ink-soft)}
+.hero-stats b{display:block;font-family:var(--font-title);font-size:1.35rem;color:var(--ink);line-height:1.2}
+.hero-art{position:relative;z-index:1}
+.hero-art svg{width:100%;height:auto;filter:drop-shadow(0 12px 30px rgba(28,43,46,.12))}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:1.6rem}
+  .hero-art{order:-1;max-width:420px;margin:0 auto}
+}
+
+/* ---------- 布局 ---------- */
+.layout{
+  max-width:var(--maxw);margin:0 auto;padding:var(--gap) var(--gap) 3rem;
+  display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:calc(var(--gap)*1.2);
+  align-items:start;
+}
+.maincol{min-width:0;display:flex;flex-direction:column;gap:calc(var(--gap)*1.15)}
+aside.side{position:sticky;top:calc(var(--stick) + 12px);display:flex;flex-direction:column;gap:var(--gap)}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  aside.side{position:static;order:2}
+}
+.block{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);
+  padding:clamp(1.1rem,2.6vw,1.8rem);box-shadow:var(--shadow-s);
+}
+.block > h2{font-size:var(--fs-h2);margin-bottom:.35em;letter-spacing:.01em}
+.block > .sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:1.1em}
+.kicker{
+  display:inline-block;font-size:.72rem;letter-spacing:.14em;color:var(--accent);
+  font-weight:700;margin-bottom:.5em;text-transform:uppercase;
+}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1em}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.9em}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-m);
+  overflow:hidden;transition:transform .2s,box-shadow .2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.card .thumb{aspect-ratio:16/10;object-fit:cover;width:100%}
+.card .body{padding:.85em 1em 1em}
+.card h3{font-size:var(--fs-h3);margin-bottom:.3em}
+.card p{font-size:.86rem;color:var(--ink-soft);margin:0}
+.card .meta{font-size:.74rem;color:var(--accent-2);margin-top:.55em;letter-spacing:.03em}
+
+/* 精选：非对称组合 */
+.feature-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:1em}
+.feature-grid .big{grid-row:span 2}
+.feature-grid .big .thumb{aspect-ratio:16/11}
+@media (max-width:720px){.feature-grid{grid-template-columns:1fr}.feature-grid .big{grid-row:auto}}
+
+/* 紧凑列表 */
+.tightlist{list-style:none;margin:0;padding:0}
+.tightlist li{
+  display:flex;gap:.9em;padding:.72em 0;border-bottom:1px dashed var(--line);
+  align-items:baseline;
+}
+.tightlist li:last-child{border-bottom:0}
+.tightlist time{font-size:.76rem;color:var(--accent-2);flex-shrink:0;width:70px;letter-spacing:.02em}
+.tightlist .tx{font-size:.92rem}
+.tightlist .tx b{font-weight:600}
+.tightlist .tx span{display:block;font-size:.82rem;color:var(--ink-soft)}
+
+/* 标签索引 */
+.tags{display:flex;flex-wrap:wrap;gap:.5em;list-style:none;margin:0;padding:0}
+.tags a{
+  display:inline-block;text-decoration:none;font-size:.84rem;padding:.4em .9em;
+  border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-soft);
+  transition:background .18s,color .18s,border-color .18s;
+}
+.tags a:hover{background:var(--ink);color:#f5efe2;border-color:var(--ink)}
+.tags .cnt{font-size:.72rem;color:var(--accent);margin-left:.3em}
+
+/* 分栏正文（深度解析） */
+.deep{background:var(--card)}
+.deep .prose{max-width:46em}
+.deep h3{margin-top:1.5em;font-size:var(--fs-h3);padding-left:.6em;border-left:3px solid var(--gold)}
+.deep .prose p{font-size:.97rem}
+.quote{
+  border-left:3px solid var(--accent);background:var(--paper);padding:.9em 1.1em;
+  margin:1.1em 0;border-radius:0 var(--radius-m) var(--radius-m) 0;font-family:var(--font-title);
+  font-size:.98rem;color:var(--ink);
+}
+.quote cite{display:block;font-style:normal;font-size:.76rem;color:var(--ink-soft);margin-top:.4em;font-family:var(--font-body)}
+.split{
+  display:grid;grid-template-columns:1fr 1fr;gap:1em;margin:1.1em 0;
+}
+@media (max-width:640px){.split{grid-template-columns:1fr}}
+.panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-m);padding:.9em 1em;
+}
+.panel h4{font-size:.86rem;letter-spacing:.06em;color:var(--accent);margin-bottom:.4em;font-family:var(--font-body)}
+.panel ul{margin:0;padding-left:1.1em;font-size:.88rem;color:var(--ink-soft)}
+.panel li{margin-bottom:.3em}
+
+/* 编号步骤 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{
+  counter-increment:st;position:relative;padding:.55em 0 .55em 2.6em;font-size:.92rem;
+}
+.steps li::before{
+  content:counter(st,decimal-leading-zero);position:absolute;left:0;top:.5em;
+  width:1.9em;height:1.9em;border-radius:50%;background:var(--ink);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:.74rem;font-weight:700;
+}
+.steps li b{display:block}
+
+/* 时间线 */
+.timeline{list-style:none;margin:0;padding:0 0 0 1.1em;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 1.1em 1em;font-size:.9rem}
+.timeline li::before{
+  content:"";position:absolute;left:-1.35em;top:.45em;width:9px;height:9px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--card);
+}
+.timeline time{display:block;font-size:.74rem;color:var(--accent);letter-spacing:.04em}
+.timeline b{font-weight:600}
+
+/* FAQ */
+details.faq{
+  border:1px solid var(--line);border-radius:var(--radius-m);background:var(--paper);
+  padding:.7em 1em;margin-bottom:.6em;
+}
+details.faq[open]{background:#fff;box-shadow:var(--shadow-s)}
+details.faq summary{
+  cursor:pointer;font-weight:600;font-size:.93rem;list-style:none;
+  display:flex;justify-content:space-between;gap:1em;align-items:flex-start;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";color:var(--accent);font-weight:400;font-size:1.15rem;line-height:1}
+details.faq[open] summary::after{content:"–"}
+details.faq .ans{font-size:.88rem;color:var(--ink-soft);padding-top:.55em}
+
+/* 评论 */
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9em}
+.review{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-m);
+  padding:.9em 1em;font-size:.88rem;
+}
+.review .who{display:flex;align-items:center;gap:.55em;margin-bottom:.4em}
+.avatar{
+  width:28px;height:28px;border-radius:50%;background:var(--accent-2);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;
+}
+.review .who b{font-size:.84rem}
+.review .who span{font-size:.72rem;color:var(--ink-soft)}
+.review p{margin:0;color:var(--ink-soft)}
+.review .ref{display:block;margin-top:.5em;font-size:.74rem;color:var(--accent)}
+
+/* 资讯 */
+.newslist{list-style:none;margin:0;padding:0}
+.newslist li{
+  padding:.7em 0;border-bottom:1px solid var(--paper-2);font-size:.9rem;
+  display:flex;gap:.8em;align-items:baseline;
+}
+.newslist li:last-child{border-bottom:0}
+.newslist .src{
+  font-size:.72rem;color:var(--accent-2);border:1px solid var(--line);
+  padding:.1em .5em;border-radius:999px;flex-shrink:0;
+}
+.newslist .sum{font-size:.8rem;color:var(--ink-soft);display:block}
+
+/* 榜单 */
+.rank{list-style:none;margin:0;padding:0;counter-reset:rk}
+.rank li{
+  counter-increment:rk;display:flex;gap:.8em;align-items:flex-start;
+  padding:.6em 0;border-bottom:1px dashed var(--line);font-size:.9rem;
+}
+.rank li:last-child{border-bottom:0}
+.rank li::before{
+  content:counter(rk);font-family:var(--font-title);font-weight:700;color:var(--accent);
+  font-size:1.05rem;width:1.3em;flex-shrink:0;line-height:1.4;
+}
+.rank .rt b{display:block}
+.rank .rt span{font-size:.8rem;color:var(--ink-soft)}
+
+/* 侧栏 */
+.side .block{padding:1.1em 1.2em}
+.side h2{font-size:1rem;letter-spacing:.05em;margin-bottom:.7em}
+.side nav ul{list-style:none;margin:0;padding:0}
+.side nav a{
+  display:block;font-size:.86rem;padding:.42em .6em;border-radius:var(--radius-s);
+  text-decoration:none;color:var(--ink-soft);border-left:2px solid transparent;
+}
+.side nav a:hover{background:var(--paper-2);color:var(--ink)}
+.side nav a.active{color:var(--accent);border-left-color:var(--accent);background:#f4ebda;font-weight:600}
+.side .note{font-size:.8rem;color:var(--ink-soft);margin:0}
+.side .note b{color:var(--ink)}
+
+/* 页脚 */
+footer.sitefoot{
+  background:var(--ink);color:#cfc6b4;font-size:.86rem;margin-top:2rem;
+}
+footer .wrap{max-width:var(--maxw);margin:0 auto;padding:2.4rem var(--gap) 1.4rem}
+.footgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--gap)}
+@media (max-width:800px){.footgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.footgrid{grid-template-columns:1fr}}
+.footbrand .fb{display:flex;align-items:center;gap:.6em;margin-bottom:.7em}
+.footbrand svg{width:34px;height:34px}
+.footbrand .nm{font-family:var(--font-title);color:#f0e8d6;font-size:1.05rem;font-weight:700}
+.footbrand p{color:#a89f8d;max-width:26em;margin-bottom:.6em}
+.footcol h3{font-size:.86rem;color:#f0e8d6;letter-spacing:.08em;margin-bottom:.6em;font-family:var(--font-body)}
+.footcol ul{list-style:none;margin:0;padding:0}
+.footcol a{display:inline-block;padding:.22em 0;color:#b8ae9a;text-decoration:none;font-size:.84rem}
+.footcol a:hover{color:var(--gold)}
+.footmeta{
+  border-top:1px solid #35474a;margin-top:1.8em;padding-top:1em;
+  display:flex;flex-wrap:wrap;gap:.6em 1.4em;justify-content:space-between;
+  font-size:.76rem;color:#8f8877;
+}
+.footmeta .fine{max-width:52em}
+
+#toTop{
+  position:fixed;right:18px;bottom:22px;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;
+  box-shadow:var(--shadow-m);font-size:1.05rem;display:none;align-items:center;justify-content:center;
+  z-index:90;
+}
+#toTop.show{display:flex}
+@media (max-width:560px){#toTop{right:12px;bottom:14px;width:40px;height:40px}}
+
+mark{background:#f6dfa0;color:var(--ink);padding:0 .1em;border-radius:2px}
+.hidden-row{display:none !important}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+  .card:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"1000欧洲人体",
+  "inLanguage":"zh-CN",
+  "description":"欧洲当代人体摄影与写生作品的观察索引，涵盖展览、图集、创作方法与观看伦理。",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"/#portal",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"欧洲人体写生课程一般怎么分组？","acceptedAnswer":{"@type":"Answer","text":"常见做法按经验分初阶、进阶、专题三组，每组6至12人，模特每20分钟换一次姿势。"}},
+    {"@type":"Question","name":"人体摄影作品展览允许拍摄吗？","acceptedAnswer":{"@type":"Answer","text":"多数欧洲画廊允许非闪光拍摄，但需避开其他观众；标注禁止摄影的展区约占三成。"}},
+    {"@type":"Question","name":"如何判断一组人体写真的拍摄年代？","acceptedAnswer":{"@type":"Answer","text":"看胶片颗粒、显影偏色与印相纸边标，1990年代前的银盐作品边缘常留有批号。"}},
+    {"@type":"Question","name":"人体速写用炭笔还是铅笔更容易上手？","acceptedAnswer":{"@type":"Answer","text":"炭条出效果快、适合大幅面，铅笔更适合细节修正，入门常先用软炭条练大形。"}},
+    {"@type":"Question","name":"观摩人体作品需要了解模特授权吗？","acceptedAnswer":{"@type":"Answer","text":"需要确认作品来源与授权范围，公开出版的作品通常在版权页或展览说明中标注授权条款。"}}
+  ]
+}
+</script>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#portal">跳到主要内容</a>
+
+<div class="stickwrap">
+  <div class="topbar" role="region" aria-label="站点公告">
+    <div class="wrap">
+      <span><b>11月7日更新</b> 汉堡“北光暗房”新增 42 张银盐人体底片扫描</span>
+      <span class="dot" aria-hidden="true">•</span>
+      <span>里昂双年展人体单元延长至 11月29日</span>
+      <span class="dot" aria-hidden="true">•</span>
+      <span>本周图集索引新增 <b>1000 欧洲</b> 视角下的 6 组写生记录</span>
+    </div>
+  </div>
+
+  <header class="sitehead">
+    <div class="wrap">
+      <a class="brand" href="/#portal" aria-label="返回首页">
+        <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1c2b2e"/>
+          <circle cx="32" cy="25" r="10.5" fill="none" stroke="#d9a46b" stroke-width="2.4"/>
+          <path d="M18 54c2-11 8-16 14-16s12 5 14 16" fill="none" stroke="#d9a46b" stroke-width="2.4"/>
+          <path d="M12 32h8M44 32h8" stroke="#5f7f6f" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="bt">1000 欧洲 人体<small>EUROPEAN FIGURE INDEX</small></span>
+      </a>
+      <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">☰ 频道</button>
+      <nav class="mainnav" id="mainNav" aria-label="主题导航">
+        <ul>
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#picks">精选图集</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#reviews">用户评论</a></li>
+        </ul>
+      </nav>
+      <div class="headtools">
+        <div class="searchbox">
+          <label for="siteSearch" class="skip">站内搜索</label>
+          <input id="siteSearch" type="search" placeholder="搜图集 / 展讯…" autocomplete="off">
+          <button id="searchBtn" type="button" aria-label="执行搜索">搜索</button>
+          <div class="searchmsg" id="searchMsg" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- ========== 首屏 ========== -->
+<section class="hero" id="portal" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">欧洲人体 · 观察与索引</span>
+      <h1 id="heroTitle">1000 欧洲 人体</h1>
+      <p class="lede">从柏林暗房到里斯本书桌，欧洲的人体写生与摄影在过去一年留下了可查的课程表、展签与底片编号。这里按<strong>图集、展览、方法与伦理</strong>四条线索整理，帮助你在搜索前先弄清要看什么、能看什么、该注意什么。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/#deep">读深度解析</a>
+        <a class="btn btn-ghost" href="/#channels">按分类查找</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>1,024</b>条图集条目</div>
+        <div><b>37</b>场在展</div>
+        <div><b>18</b>城写生课</div>
+        <div><b>11月7日</b>最后校对</div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 340" role="img">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e6d9c2"/><stop offset="1" stop-color="#d3c2a2"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1c2b2e"/><stop offset="1" stop-color="#415255"/>
+          </linearGradient>
+        </defs>
+        <rect x="18" y="20" width="384" height="300" rx="22" fill="url(#g1)" stroke="#d6cdba"/>
+        <circle cx="196" cy="120" r="58" fill="none" stroke="#b5623a" stroke-width="2"/>
+        <path d="M150 236c4-47 26-72 46-72s42 25 46 72" fill="none" stroke="#b5623a" stroke-width="2"/>
+        <path d="M196 62v116M138 120h116" stroke="#5f7f6f" stroke-width="1" stroke-dasharray="4 6" opacity=".7"/>
+        <rect x="60" y="248" width="120" height="7" rx="3.5" fill="url(#g2)"/>
+        <rect x="60" y="262" width="84" height="7" rx="3.5" fill="#c79a55"/>
+        <rect x="252" y="248" width="108" height="7" rx="3.5" fill="#c79a55"/>
+        <rect x="252" y="262" width="70" height="7" rx="3.5" fill="url(#g2)"/>
+        <circle cx="196" cy="120" r="10" fill="none" stroke="#1c2b2e" stroke-width="1.6"/>
+        <path d="M186 120h20M196 110v20" stroke="#1c2b2e" stroke-width="1.2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 主内容 ========== -->
+<div class="layout">
+  <main class="maincol" id="main">
+
+    <!-- 领域概览 -->
+    <section class="block" id="overview" aria-labelledby="h-overview">
+      <span class="kicker">领域概览</span>
+      <h2 id="h-overview">欧洲人体写生与摄影的四个实操层面</h2>
+      <p class="sub">模特排期、场地许可、器材选择、作品归档，各自有独立规则，混为一谈最容易出错。</p>
+      <div class="grid2">
+        <div class="panel">
+          <h4>模特与排期</h4>
+          <ul>
+            <li>阿姆斯特丹 Rijksatelier 周二、周四晚固定三小时</li>
+            <li>单次课酬区间 45—90 欧元，浮动看是否含肖像授权</li>
+            <li>连续姿势通常 20 分钟一换，短姿势 1—5 分钟</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>场地与许可</h4>
+          <ul>
+            <li>柏林 Kreuzberg 实验空间需提前 10 天登记人数</li>
+            <li>教堂改编的写生厅禁止闪光灯</li>
+            <li>公共空间拍摄需向区文化局报备</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>器材与耗材</h4>
+          <ul>
+            <li>炭条：软炭 6B 适合 1 分钟大形</li>
+            <li>银盐相机 120 卷普遍用 ISO 400</li>
+            <li>反光板 80cm 五合一，室内够用</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>归档与授权</h4>
+          <ul>
+            <li>版权页需注明模特授权范围</li>
+            <li>底片编号常用“城市-年份-序号”</li>
+            <li>展览图录授权期多为 5 年</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 精选内容推荐 -->
+    <section class="block" id="picks" aria-labelledby="h-picks">
+      <span class="kicker">精选推荐</span>
+      <h2 id="h-picks">本周值得打开的六组图集与课表</h2>
+      <p class="sub">按可核对的开放时间与授权状态筛过一轮，标注了模特人数与拍摄介质。</p>
+      <div class="feature-grid">
+        <article class="card big">
+          <img class="thumb" src="https://picsum.photos/seed/figure-hamburg-darkroom/720/480" width="720" height="480" loading="lazy" alt="汉堡北光暗房内悬挂的银盐人体底片与夹子">
+          <div class="body">
+            <h3>北光暗房：42 张银盐人体底片扫描上线</h3>
+            <p>汉堡 St. Pauli 的北光暗房把 1998—2004 年的档案底片做成可检索扫描件，按拍摄年份与模特编号排列，附曝光参数。</p>
+            <span class="meta">汉堡 · 42 张 · 11月7日更新</span>
+          </div>
+        </article>
+        <article class="card">
+          <img class="thumb" src="https://picsum.photos/seed/figure-lyon-biennale/480/300" width="480" height="300" loading="lazy" alt="里昂双年展人体单元展厅墙面与展签">
+          <div class="body">
+            <h3>里昂双年展人体单元的展签写法</h3>
+            <p>每张作品旁标注模特授权类型与拍摄日期，11月29日前可现场比对。</p>
+            <span class="meta">里昂 · 展至11月29日</span>
+          </div>
+        </article>
+        <article class="card">
+          <img class="thumb" src="https://picsum.photos/seed/figure-amsterdam-class/480/300" width="480" height="300" loading="lazy" alt="阿姆斯特丹写生教室里模特台与画架">
+          <div class="body">
+            <h3>阿姆斯特丹三小时写生课排期</h3>
+            <p>周二、周四晚 19:00—22:00，含 5 分钟、20 分钟两档姿势。</p>
+            <span class="meta">阿姆斯特丹 · 每周两场</span>
+          </div>
+        </article>
+      </div>
+      <div class="grid3" style="margin-top:1em">
+        <article class="card"><div class="body"><h3>里斯本书桌人体速写 30 天</h3><p>每天一张 15 分钟速写，11月5日合集。</p><span class="meta">里斯本</span></div></article>
+        <article class="card"><div class="body"><h3>维也纳分离派人体线稿对照</h3><p>1910 年代线稿与当代翻拍并置，共 18 组。</p><span class="meta">维也纳</span></div></article>
+        <article class="card"><div class="body"><h3>哥本哈根夜校模特授权说明</h3><p>明确课程内拍摄仅限个人练习。</p><span class="meta">哥本哈根</span></div></article>
+      </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section class="block" id="latest" aria-labelledby="h-latest">
+      <span class="kicker">最新更新</span>
+      <h2 id="h-latest">11月1日至11月7日的条目变动</h2>
+      <p class="sub">只记录新增、修订与撤销，更新时间可逐条回溯。</p>
+      <ul class="tightlist">
+        <li><time datetime="2026-11-07">11月7日</time><span class="tx"><b>北光暗房底片扫描</b><span>新增 42 张，修复 3 张扫描偏色。</span></span></li>
+        <li><time datetime="2026-11-06">11月6日</time><span class="tx"><b>里昂双年展人体单元</b><span>展期延长两周，展签新增授权类型栏。</span></span></li>
+        <li><time datetime="2026-11-05">11月5日</time><span class="tx"><b>里斯本书桌速写合集</b><span>30 天记录归档，附 8 张过程图。</span></span></li>
+        <li><time datetime="2026-11-03">11月3日</time><span class="tx"><b>阿姆斯特丹排期表</b><span>周四晚场地由 Rijksatelier 改至 Oost 画室。</span></span></li>
+        <li><time datetime="2026-11-01">11月1日</time><span class="tx"><b>维也纳线稿对照</b><span>撤下 2 组授权到期的翻拍。</span></span></li>
+      </ul>
+    </section>
+
+    <!-- 分类入口 -->
+    <section class="block" id="channels" aria-labelledby="h-channels">
+      <span class="kicker">分类入口</span>
+      <h2 id="h-channels">按具体类别进入</h2>
+      <p class="sub">标签后的数字是当前可检索条目数，非累计浏览量。</p>
+      <ul class="tags">
+        <li><a href="/#picks">银盐人体底片<span class="cnt">186</span></a></li>
+        <li><a href="/#picks">欧洲人体写生课<span class="cnt">94</span></a></li>
+        <li><a href="/#deep">人体炭笔速写<span class="cnt">142</span></a></li>
+        <li><a href="/#latest">画廊人体展讯<span class="cnt">37</span></a></li>
+        <li><a href="/#guide">模特授权与肖像权<span class="cnt">28</span></a></li>
+        <li><a href="/#reviews">人体图录书评<span class="cnt">63</span></a></li>
+        <li><a href="/#deep">明胶银盐显影工艺<span class="cnt">41</span></a></li>
+        <li><a href="/#guide">写生用光与反光板<span class="cnt">52</span></a></li>
+        <li><a href="/#picks">分离派人体验线稿<span class="cnt">19</span></a></li>
+        <li><a href="/#reviews">人体摄影集开箱<span class="cnt">77</span></a></li>
+      </ul>
+    </section>
+
+    <!-- 深度解析 -->
+    <section class="block deep" id="deep" aria-labelledby="h-deep">
+      <span class="kicker">深度解析</span>
+      <h2 id="h-deep">欧洲人体图像的可核对之处：三个判断与它们的依据</h2>
+      <div class="prose">
+        <p>把“人体”当作一个统一题材会遮住很多差别：银盐底片的曝光宽容度、写生课的模特排期、展览的授权条款，是三套互不通用的规则。以下判断都尽量落到日期、编号或价格上，方便推翻。</p>
+
+        <h3>判断一：银盐人体底片的“年代感”多半来自印相纸，而不是胶片</h3>
+        <p>北光暗房这批 1998—2004 年的底片，扫描时保留了纸张边标：1998 年多用 Agfa 的 RC 相纸，2001 年后换成 Ilford 的 FB 纸。边标批号与年份的对应关系可逐张核对，所以年代判断的第一落点是纸，不是颗粒。反过来说，如果同一年份出现两种纸，说明冲洗批次被换过，不能拿一组照片的观感去套整批。</p>
+        <div class="split">
+          <div class="panel">
+            <h4>可核对项</h4>
+            <ul>
+              <li>相纸边标与年份对照表</li>
+              <li>底片编号“HAM-年份-序号”</li>
+              <li>扫描件分辨率 3200dpi</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h4>容易误判的地方</h4>
+            <ul>
+              <li>扫描软件自动降噪改变颗粒形态</li>
+              <li>显示器校色差异导致偏色</li>
+              <li>后期裁剪丢失原比例</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>判断二：写生课的价格差，主要由模特授权范围决定，而不是课时长度</h3>
+        <p>对 18 城 24 门课的排期做比较：单次三小时、模特 1 人的课程，课酬落在 45—60 欧元的，授权通常只限课堂内个人练习；含公开投稿授权的，课酬上到 75—90 欧元。阿姆斯特丹 11月3日改动后的 Oost 画室排期就属后一档。这个差价有具体依据——组织方要在报名页写明作品可用于哪些用途，写明了才敢定价。</p>
+        <blockquote class="quote">“我们把授权写进报名表第二页，学员不勾选也能上课，但拍照就只能自己留着看。”<cite>——Oost 画室负责人 M. de Vries，11月3日排期说明</cite></blockquote>
+
+        <h3>判断三：展签信息完整度与展览规模呈反向关系</h3>
+        <p>里昂双年展人体单元共 37 件作品，每件标了模特授权类型与拍摄日期；同期柏林两场中型群展，展签只写作者与年份，缺授权栏。规模越大越难逐件核对，于是干脆省略。对观众来说，这意味着：看到只写作者名的展签，不要自行推断作品的授权状态。11月6日延长展期后，里昂方面补了一栏“授权期截止”，这算是可被引用的做法。</p>
+        <p>还有一种常被转述的说法：欧洲人体展“默认允许拍摄”。现场规则并不一致，里昂单元约三成展区标了禁止摄影，柏林那两场则允许非闪光拍摄。两种做法各有理由，但都不是默认。</p>
+      </div>
+    </section>
+
+    <!-- 体验指南 -->
+    <section class="block" id="guide" aria-labelledby="h-guide">
+      <span class="kicker">体验指南</span>
+      <h2 id="h-guide">第一次参加人体写生课的五个步骤</h2>
+      <p class="sub">以阿姆斯特丹 Oost 画室为例，其他城市流程大同小异。</p>
+      <ol class="steps">
+        <li><b>先看授权页，再报名。</b>报名表第二页写明作品可用于哪些用途，不勾选也能上课，但拍摄仅限自己留存。</li>
+        <li><b>带两样就够。</b>软炭条 6B 与 A2 素描纸，画架与画板场地提供，无需自备。</li>
+        <li><b>前 20 分钟画大形。</b>模特第一个姿势通常保持 20 分钟，够画三张轮廓。</li>
+        <li><b>短姿势记录动态。</b>1—5 分钟的姿势用于练抓形，不要抠细节。</li>
+        <li><b>结束前核对作品去向。</b>想投稿的，当场向组织方确认是否在授权范围内，避免事后返工。</li>
+      </ol>
+      <p style="font-size:.86rem;color:var(--ink-soft);margin-top:.8em">课酬与授权条款以各城市画室最新排期为准，11月3日 Oost 画室的改动已同步到排期表。</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="block" id="faq" aria-labelledby="h-faq">
+      <span class="kicker">常见问答</span>
+      <h2 id="h-faq">关于欧洲人体课程与展览的常见问题</h2>
+      <details class="faq" open>
+        <summary>欧洲人体写生课程一般怎么分组？</summary>
+        <div class="ans">常见做法按经验分初阶、进阶、专题三组，每组 6—12 人，模特每 20 分钟换一次姿势。初阶组多画 20 分钟长姿势，进阶组加入 5 分钟短姿势。</div>
+      </details>
+      <details class="faq">
+        <summary>人体摄影作品展览允许拍摄吗？</summary>
+        <div class="ans">多数欧洲画廊允许非闪光拍摄，但需避开其他观众；标注禁止摄影的展区约占三成。里昂双年展人体单元 11月6日起在展签上补了拍摄提示。</div>
+      </details>
+      <details class="faq">
+        <summary>如何判断一组人体写真的拍摄年代？</summary>
+        <div class="ans">看胶片颗粒、显影偏色与印相纸边标，1990 年代前的银盐作品边缘常留有批号。北光暗房 1998—2004 年的底片可按纸边批号逐张对应年份。</div>
+      </details>
+      <details class="faq">
+        <summary>人体速写用炭笔还是铅笔更容易上手？</summary>
+        <div class="ans">炭条出效果快、适合大幅面，铅笔更适合细节修正。入门常先用软炭条 6B 练大形，画到 20 张左右再换铅笔抠结构。</div>
+      </details>
+      <details class="faq">
+        <summary>观摩人体作品需要了解模特授权吗？</summary>
+        <div class="ans">需要确认作品来源与授权范围，公开出版的作品通常在版权页或展览说明中标注授权条款。只标作者名的展签不构成授权说明。</div>
+      </details>
+      <details class="faq">
+        <summary>写生课的模特课酬大概多少？</summary>
+        <div class="ans">单次三小时、1 名模特，课酬区间 45—90 欧元，浮动主要看是否含公开投稿授权，而不是课时长度。</div>
+      </details>
+    </section>
+
+    <!-- 用户评论 -->
+    <section class="block" id="reviews" aria-labelledby="h-reviews">
+      <span class="kicker">用户评论</span>
+      <h2 id="h-reviews">上过课、看过展的人怎么说</h2>
+      <p class="sub">评论按条目关联，语气不一，保留中性意见。</p>
+      <div class="reviews">
+        <div class="review">
+          <div class="who"><span class="avatar">林</span><b>林之遥</b><span>· 11月5日</span></div>
+          <p>Oost 画室换了场地之后，灯光比原来亮，20 分钟长姿势的结构看得更清楚，但门口不太好找。</p>
+          <span class="ref">关联：阿姆斯特丹排期表</span>
+        </div>
+        <div class="review">
+          <div class="who"><span class="avatar">K</span><b>K. 何</b><span>· 11月4日</span></div>
+          <p>北光暗房那 42 张扫描件确实能放大看纸边批号，这点比多数线上档案强。只是加载慢，3200dpi 的文件不小。</p>
+          <span class="ref">关联：北光暗房底片扫描</span>
+        </div>
+        <div class="review">
+          <div class="who"><span class="avatar">周</span><b>周叙</b><span>· 11月2日</span></div>
+          <p>里昂的展签写得细，但“授权期截止”那栏补得太晚，第一周去看的人等于没看到这信息，有点可惜。</p>
+          <span class="ref">关联：里昂双年展人体单元</span>
+        </div>
+        <div class="review">
+          <div class="who"><span class="avatar">S</span><b>苏打水</b><span>· 10月30日</span></div>
+          <p>速写课说提供画架，去了发现只有画板，架子要自己抢。流程写得清楚，现场执行一般。</p>
+          <span class="ref">关联：体验指南第 2 步</span>
+        </div>
+        <div class="review">
+          <div class="who"><span class="avatar">陈</span><b>陈默</b><span>· 11月6日</span></div>
+          <p>维也纳那 18 组线稿对照值得看，翻拍色彩偏冷，和原件比要打个折扣，但结构线还是可靠的。</p>
+          <span class="ref">关联：维也纳线稿对照</span>
+        </div>
+        <div class="review">
+          <div class="who"><span class="avatar">M</span><b>Mira</b><span>· 11月1日</span></div>
+          <p>里斯本 30 天速写合集里第 18 天那张明显赶时间，线条糊成一团，不过反而最像真人动起来的瞬间。</p>
+          <span class="ref">关联：里斯本书桌速写合集</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 相关资讯 -->
+    <section class="block" id="news" aria-labelledby="h-news">
+      <span class="kicker">相关资讯</span>
+      <h2 id="h-news">近期可核对的展讯与档案动态</h2>
+      <ul class="newslist">
+        <li><span class="src">里昂</span><span><b>人体单元展期延至 11月29日</b><span class="sum">11月6日馆方公告，同时补设授权期说明栏，共 37 件作品。</span></span></li>
+        <li><span class="src">汉堡</span><span><b>北光暗房公开 1998—2004 年底片编号规则</b><span class="sum">编号按“HAM-年份-序号”，11月7日附 42 张扫描示例。</span></span></li>
+        <li><span class="src">阿姆斯特丹</span><span><b>Oost 画室周四晚场地调整</b><span class="sum">11月3日起由 Rijksatelier 改至 Oost，课酬与授权条款不变。</span></span></li>
+        <li><span class="src">维也纳</span><span><b>分离派人体线稿对照撤下 2 组翻拍</b><span class="sum">11月1日因授权到期撤下，剩 16 组在线。</span></span></li>
+      </ul>
+    </section>
+
+    <!-- 榜单 -->
+    <section class="block" id="rank" aria-labelledby="h-rank">
+      <span class="kicker">热度榜</span>
+      <h2 id="h-rank">本月图集检索前五</h2>
+      <p class="sub">按站内检索与打开次数计，11月1—7日。</p>
+      <ol class="rank">
+        <li><span class="rt"><b>北光暗房 1998—2004 银盐人体底片</b><span>42 张，汉堡，可放大看纸边批号</span></span></li>
+        <li><span class="rt"><b>里昂双年展人体单元展签对照</b><span>37 件，展至11月29日</span></span></li>
+        <li><span class="rt"><b>阿姆斯特丹三小时写生课排期</b><span>周二、周四晚，45—90 欧元</span></span></li>
+        <li><span class="rt"><b>维也纳分离派人体线稿 16 组</b><span>1910 年代线稿与当代翻拍并置</span></span></li>
+        <li><span class="rt"><b>里斯本书桌速写 30 天合集</b><span>每天 15 分钟，11月5日归档</span></span></li>
+      </ol>
+    </section>
+
+    <!-- 补充：可信度分层 -->
+    <section class="block" id="trust" aria-labelledby="h-trust">
+      <span class="kicker">可信度分层</span>
+      <h2 id="h-trust">三类信息，按可核对程度分开读</h2>
+      <div class="grid3">
+        <div class="panel">
+          <h4>事实层</h4>
+          <ul>
+            <li>馆方公告日期与展期</li>
+            <li>底片编号与扫描分辨率</li>
+            <li>课酬区间与授权条款原文</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>回应层</h4>
+          <ul>
+            <li>画室负责人对排期改动的说明</li>
+            <li>馆方补设授权栏的公告</li>
+            <li>模特对课程拍摄范围的表态</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>推测层</h4>
+          <ul>
+            <li>由纸边标推断冲洗批次</li>
+            <li>由价格反推授权范围</li>
+            <li>由展签完整度推断展览规模</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:.85rem;color:var(--ink-soft);margin-top:.9em">推测层内容只出现在深度解析与评论，不进入资讯摘要。</p>
+    </section>
+
+    <!-- 相关推荐 -->
+    <section class="block" id="related" aria-labelledby="h-related">
+      <span class="kicker">相关推荐</span>
+      <h2 id="h-related">顺着这些具体条目继续找</h2>
+      <ul class="tags">
+        <li><a href="/#picks">欧洲人体写生课排期合集</a></li>
+        <li><a href="/#deep">银盐人体底片纸边批号对照</a></li>
+        <li><a href="/#reviews">人体图录书评 12 篇</a></li>
+        <li><a href="/#guide">模特授权与肖像权说明</a></li>
+        <li><a href="/#picks">明胶银盐显影参数表</a></li>
+        <li><a href="/#guide">写生反光板摆位示意</a></li>
+        <li><a href="/#news">画廊人体展讯汇总</a></li>
+        <li><a href="/#deep">分离派人体验线稿对照</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ========== 侧栏 ========== -->
+  <aside class="side" aria-label="侧栏导航与速览">
+    <div class="block">
+      <h2>本页频道</h2>
+      <nav aria-label="侧栏频道导航">
+        <ul id="sideNav">
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#picks">精选图集</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#reviews">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#rank">热度榜</a></li>
+          <li><a href="/#trust">可信度分层</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="block">
+      <h2>速览数据</h2>
+      <p class="note"><b>在展</b>：37 场，其中 11 场标注禁止摄影。</p>
+      <p class="note"><b>写生课</b>：18 城 24 门，课酬 45—90 欧元。</p>
+      <p class="note"><b>底片扫描</b>：北光暗房 42 张，3200dpi。</p>
+      <p class="note"><b>最后校对</b>：11月7日 09:20。</p>
+    </div>
+    <div class="block">
+      <h2>本周关键词</h2>
+      <ul class="tags">
+        <li><a href="/#picks">银盐底片</a></li>
+        <li><a href="/#channels">写生课</a></li>
+        <li><a href="/#deep">纸边批号</a></li>
+        <li><a href="/#guide">模特授权</a></li>
+        <li><a href="/#news">展签</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- ========== 页脚 ========== -->
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="footgrid">
+      <div class="footbrand">
+        <div class="fb">
+          <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2a3b3e"/>
+            <circle cx="32" cy="25" r="10.5" fill="none" stroke="#d9a46b" stroke-width="2.4"/>
+            <path d="M18 54c2-11 8-16 14-16s12 5 14 16" fill="none" stroke="#d9a46b" stroke-width="2.4"/>
+          </svg>
+          <span class="nm">1000 欧洲 人体</span>
+        </div>
+        <p>记录欧洲人体写生与摄影的排期、展签与归档规则，把日期、编号和授权条款放在同一张表里。</p>
+      </div>
+      <div class="footcol">
+        <h3>图集与展览</h3>
+        <ul>
+          <li><a href="/#picks">银盐人体底片</a></li>
+          <li><a href="/#picks">写生课排期</a></li>
+          <li><a href="/#news">展讯汇总</a></li>
+          <li><a href="/#rank">热度榜</a></li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h3>方法与规则</h3>
+        <ul>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#trust">可信度分层</a></li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h3>互动</h3>
+        <ul>
+          <li><a href="/#reviews">用户评论</a></li>
+          <li><a href="/#latest">更新记录</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footmeta">
+      <span class="fine">条目为示例数据，日期以 2026年11月8日为参照；课程与展期以各主办方公告为准。页脚更新时间 11月7日，对应正文“最新更新”与“相关资讯”两条。</span>
+      <span>© 2026 1000 欧洲 人体</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var mainNav = document.getElementById('mainNav');
+  if(menuBtn && mainNav){
+    menuBtn.addEventListener('click', function(){
+      var open = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mainNav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && window.innerWidth <= 900){
+        mainNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  // 本地搜索
+  var searchInput = document.getElementById('siteSearch');
+  var searchBtn = document.getElementById('searchBtn');
+  var searchMsg = document.getElementById('searchMsg');
+
+  function clearMarks(){
+    document.querySelectorAll('mark[data-srch]').forEach(function(m){
+      var t = document.createTextNode(m.textContent);
+      m.parentNode.replaceChild(t, m);
+    });
+  }
+  function doSearch(){
+    var q = (searchInput.value || '').trim();
+    clearMarks();
+    if(!q){
+      searchMsg.textContent = '请输入关键词，例如：底片、授权、里昂';
+      searchMsg.classList.add('show');
+      return;
+    }
+    var main = document.getElementById('main');
+    var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(n){
+        if(!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode;
+        if(p && (p.tagName === 'SCRIPT' || p.tagName === 'STYLE')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [], n, hits = 0;
+    while((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function(node){
+      var text = node.nodeValue;
+      var idx = text.toLowerCase().indexOf(q.toLowerCase());
+      if(idx === -1) return;
+      var frag = document.createDocumentFragment();
+      var last = 0;
+      while(idx !== -1){
+        frag.appendChild(document.createTextNode(text.slice(last, idx)));
+        var m = document.createElement('mark');
+        m.setAttribute('data-srch','1');
+        m.textContent = text.slice(idx, idx + q.length);
+        frag.appendChild(m);
+        last = idx + q.length;
+        hits++;
+        idx = text.toLowerCase().indexOf(q.toLowerCase(), last);
+      }
+      frag.appendChild(document.createTextNode(text.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+    if(hits > 0){
+      searchMsg.textContent = '找到 ' + hits + ' 处含“' + q + '”的内容，已高亮。';
+      var first = document.querySelector('mark[data-srch]');
+      if(first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    }else{
+      searchMsg.textContent = '没有找到含“' + q + '”的条目，试试：底片、授权、里昂、写生课。';
+    }
+    searchMsg.classList.add('show');
+  }
+  if(searchBtn) searchBtn.addEventListener('click', doSearch);
+  if(searchInput) searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+  });
+  document.addEventListener('click', function(e){
+    if(searchMsg && !e.target.closest('.searchbox')) searchMsg.classList.remove('show');
+  });
+
+  // 侧栏滚动高亮
+  var sections = document.querySelectorAll('main section[id]');
+  var sideLinks = document.querySelectorAll('#sideNav a');
+  if('IntersectionObserver' in window && sections.length && sideLinks.length){
+    var map = {};
+    sideLinks.forEach(function(a){
+      var id = a.getAttribute('href').replace('/#','');
+      map[id] = a;
+    });
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          sideLinks.forEach(function(a){ a.classList.remove('active'); });
+          var link = map[en.target.id];
+          if(link) link.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+
+  // 回到顶部
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ toTop.classList.add('show'); }
+    else{ toTop.classList.remove('show'); }
+  }, {passive:true});
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+                                          </html>
